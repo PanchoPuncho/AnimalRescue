@@ -1,24 +1,16 @@
 <?php
-    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
-    $dbuser = "franciscocuevas";
-    $dbpass = "Juan1985";
-    $dbname = "ebdb";
-    $dbport = 3306;
-
     // Create connection
-    echo "Attempting connection..."
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
-    echo "Connected! :)"
+    $con = mysqli_connect( 'aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306 );
     
     // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    if ( mysqli_connect_errno() ) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
     $sql = "SELECT * FROM Picture";
-    $result = $conn->query($sql);
+    $result = mysqli_query( $con, $sql );
 
-    echo "{ \"numPics\":\"".$result->num_rows."\" }";
+    echo "{ \"numPics\":\"".mysqli_num_rows( $result )."\" }";
 
-    $conn->close();
+    mysqli_close( $con );
 ?>

@@ -1,27 +1,19 @@
 <?php
-    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
-    $dbuser = "franciscocuevas";
-    $dbpass = "Juan1985";
-    $dbname = "ebdb";
-    $dbport = 3306;
-
     // Create connection
-    echo "Attempting connection..."
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
-    echo "Connected! :)"
-	
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
+    $con = mysqli_connect( 'aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306 );
+    
+    // Check connection
+    if ( mysqli_connect_errno() ) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
 
 	$sql = "UPDATE Animal SET status=\"".$_GET['status']."\", rescuerID=\"".$_GET['rescuerID']."\", monthRescued=\"".$_GET['monthRescued']."\", yearRescued=\"".$_GET['yearRescued']."\" WHERE id=\"".$_GET['id']."\"";
 
-	if ($conn->query($sql) === TRUE) {
+	if ( mysqli_query( $con, $sql ) === TRUE ) {
 		echo "{ \"message\":\"Record updated successfully\" }";
 	} else {
-		echo "{ \"message\":\"Error updating record: ".$sql." ".$conn->error."\" }";
+		echo "{ \"message\":\"Error updating record: ".$sql." ".mysqli_error( $con )."\" }";
 	}
 
-	$conn->close();
+	mysqli_close( $con );
 ?>

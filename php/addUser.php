@@ -1,27 +1,19 @@
 <?php
-    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
-    $dbuser = "franciscocuevas";
-    $dbpass = "Juan1985";
-    $dbname = "ebdb";
-    $dbport = 3306;
-
     // Create connection
-    echo "Attempting connection..."
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
-    echo "Connected! :)"
+    $con =  mysqli_connect( 'aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306 );
     
     // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    if ( mysqli_connect_errno() ) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
     $sql = "INSERT INTO Webuser VALUES (\"".$_GET['id']."\", \"".$_GET['fullName']."\", \"".$_GET['phone']."\", \"".$_GET['email']."\", \"".$_GET['addr1']."\", \"".$_GET['addr2']."\", \"".$_GET['state']."\", \"".$_GET['city']."\", \"".$_GET['zip']."\")";
 
-	if ($conn->query($sql) === TRUE) {
+	if ( mysqli_query( $con, $sql ) === TRUE ) {
 	    echo "{ \"message\":\"New record created successfully\" }";
 	} else {
-	    echo "{ \"message\":\"Error: ".$sql." ".$conn->error."\" }";
+	    echo "{ \"message\":\"Error: ".$sql." ".mysqli_error( $con )."\" }";
 	}
 
-	$conn->close();
+	mysqli_close( $con );
 ?>

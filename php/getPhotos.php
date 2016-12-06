@@ -1,33 +1,27 @@
 <?php
-    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
-    $dbuser = "franciscocuevas";
-    $dbpass = "Juan1985";
-    $dbname = "ebdb";
-    $dbport = 3306;
-
     // Create connection
-    echo "Attempting connection..."
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
-    echo "Connected! :)"
+    $con =  mysqli_connect( 'aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306 );
     
     // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    if ( mysqli_connect_errno() ) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
     $sql = "SELECT photo FROM Picture WHERE animalID=".$_GET['id'];
-    $result = $conn->query($sql);
+    $result = mysqli_query( $con, $sql );
+
+    $numResults = mysqli_num_rows( $result );
+    $counter = 0;
 
     echo "{ \"photos\":[";
-    if ($result->num_rows > 0) {
-        // output data of each row
-        for ($x = 0; $x < ($result->num_rows - 1); $x++) {
-            $row = $result->fetch_assoc();
+    while ( $row = mysqli_fetch_array( $result ) ) {
+        if ( ++$counter == $numResults ) {
+            echo "{\"photo\":\"".$row["photo"]."\"} ";
+        } else {
             echo " {\"photo\":\"".$row["photo"]."\"}, ";
         }
-        $row = $result->fetch_assoc();
-        echo "{\"photo\":\"".$row["photo"]."\"} ";
     }
     echo "] }";
-    $conn->close();
+
+    mysqli_close( $con );
 ?>
