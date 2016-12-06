@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    
+<!-- START HEAD -->
+<head> 
+	<title>Help Angel Dogs</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="data/data.json"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap-formhelpers-states.en_US.js"></script>
+	<script src="js/bootstrap-formhelpers-states.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+	<!-- Angular -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/myApp.js"></script>
+    <script src="js/myCtrl.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="packages/bootstrap-3.3.6/dist/css/bootstrap.min.css">
+	<link rel="shortcut icon" href="uploads/angelDog.png" />
+	<link rel="stylesheet" href="css/style.css">
+</head> <!-- END HEAD -->
+
+
+<!-- START BODY -->
+<body id="page-top" data-spy="scroll" data-target=".navbar" data-offset="50" ng-app="myApp" ng-controller="myCtrl">
+
+    
+<!-- Header -->
+<div class="container-fluid text-center jumbotron">
+	<h1>Angel Dogs, Inc.</h1>      
+	<h3>Saving One Dog at a Time!</h3>
+</div>
+
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="242">
+    <!-- Login Modal -->
+    <div class="modal fade myLoginModal" id="loginModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                  <form class="form-signin">
+                    <h2 id="form-signin-heading" class="text-center">Please Sign In</h2>
+                    <input type="username" id="inputEmail" class="form-control" placeholder="Username" ng-model="formData.values.username" required>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="formData.values.password" required>
+                    <button class="btn btn-lg btn-primary btn-block" id="loginButton" ng-click="login()">Sign In</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="page-scroll navbar-brand" href="#page-top">Angel Dogs</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a class="page-scroll" href="#eventSection">Events</a></li>
+				<li><a class="page-scroll" href="#rescueSection">Available Animals</a></li>
+				<li><a class="page-scroll" href="#successStoriesSection">Success Stories</a></li>
+				<li><a class="page-scroll" href="#aboutUsSection">About Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a data-toggle="modal" href="#loginModal"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Admin Account</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<!-- EVENT SECTION -->
+<section id="eventSection" class="container-fluid text-center">
+	<div class="row">
+		<h2>Welcome to Angel Dogs!</h2>
+		<h4>We are a non-profit organization dependent on donations.</h4>
+		<h4>Thank you for your support!</h4>
+		<div id="angelDogImage">
+			<img src="uploads/angelDog.png" class="center-block" alt="Image">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<h3>Some Content</h3>
+			<div class="callout">
+				<dl>
+					<dt><a href="#eventSection">Robins-Starr Humane Center</a></dt>
+					<dd>2519 Hermitage Road</dd>
+					<dd>Richmond, VA 23220</dd>
+					<dd>804-521-1300</dd>
+				</dl>
+				<dl>
+					<dt><a href="#eventSection">Adoption Hours</a></dt>
+					<dd>Mon. 12 p.m. to 5 p.m.</dd>
+					<dd>Tue. - Fri. 11 a.m. to 7 p.m.</dd>
+					<dd>Sat. 11 a.m. to 6 p.m.</dd>
+					<dd>Sun. 12 p.m. to 5 p.m.</dd>
+				</dl>
+				<dl>
+					<dt><a href="#eventSection">Administrative Hours</a></dt>
+					<dd>Mon. - Fri. 8 a.m. to 5 p.m.</dd>
+				</dl>
+				<dl>
+					<dt><a href="#eventSection">Admissions Hours</a></dt>
+					<dd>Mon. - Fri. by appointment.</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<h3>Events:</h3>
+			<div class="responsive-iframe-container">
+   				<iframe src="https://calendar.google.com/calendar/embed?src=angel.dogs.calendar%40gmail.com&showPrint=0&amp;showTitle=0&amp;showDate=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23a9a9a9&amp;ctz=America%2FNew_York" style="border-width:0" frameborder="0" scrolling="yes"></iframe>
+			</div>
+		</div>
+
+		<div class="col-sm-3">
+			<h3>Some Content</h3>
+			<div class="callout">
+				<dl>
+					<dt><a href="#eventSection">Lora Robins Gift Shop Hours</a></dt>
+					<dd>Mon. 12 p.m. to 5 p.m.</dd>
+					<dd>Tue. - Fri. 11 a.m. to 7 p.m.</dd>
+					<dd>Sat. 11 a.m. to 6 p.m.</dd>
+					<dd>Sun. 12 p.m. to 5 p.m.</dd>
+				</dl>
+				<dl>
+					<dt><a href="#eventSection">Donation Drop Off Hours</a></dt>
+					<dd>Mon. 8 a.m. to 5 p.m.</dd>
+					<dd>Tue. - Fri. 8 a.m. to 7 p.m.</dd>
+					<dd>Sat. 11 a.m. to 6 p.m.</dd>
+					<dd>Sun. 12 p.m. to 5 p.m.</dd>
+				</dl>
+				<dl>
+					<dt><a href="#eventSection">Clinic for Compassionate Care</a></dt>
+					<dd>Closed Holidays</dd>
+					<dd>Mon. - Fri. 8 a.m. to 6 p.m.</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- RESCUE SECTION -->
+<section id="rescueSection" class="container-fluid">
+    <div class="row text-center">
+		<h2>Available Animals</h2>
+	</div>
+
+    <div id="searchBar" class="container-fluid">
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<select class="form-control" id="species" ng-model="filterData.values.species" ng-change="filter()">
+					<option value="" selected>-- Species --</option>
+					<option ng-repeat="x in filterData.options.species">{{x.value}}</option>
+				</select>
+				<select class="form-control" id="breed" ng-model="filterData.values.breed" ng-change="filter()">
+					<option value="" selected>-- Breed --</option>
+					<option ng-repeat="x in filterData.options.breed">{{x.value}}</option>
+				</select>
+				<select class="form-control" id="sex" ng-model="filterData.values.sex" ng-change="filter()">
+					<option value="" selected>-- Sex --</option>
+					<option ng-repeat="x in filterData.options.sex">{{x.value}}</option>
+				</select>
+				<select class="form-control" id="age" ng-model="filterData.values.years" ng-change="filter()">
+					<option value="" selected>-- Age --</option>
+					<option ng-repeat="x in filterData.options.years" value="{{ x.id }}">{{x.value}}</option>
+				</select>
+				<select class="form-control" id="size" ng-model="filterData.values.aSize" ng-change="filter()">
+					<option value="" selected>-- Size --</option>
+					<option ng-repeat="x in filterData.options.aSize">{{x.value}}</option>
+				</select>
+                <select class="form-control" id="fixed" ng-model="filterData.values.fixed" ng-change="filter()">
+					<option value="" selected>-- Fixed --</option>
+					<option ng-repeat="x in filterData.options.fixed">{{x.value}}</option>
+				</select>
+			</div>
+			<!--div class="form-group pull-right">
+				<button class="btn btn-default" ng-click="filter()"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Filter</button>
+			</div-->
+		</form>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4" ng-repeat="x in animalsInNeed">
+			<!-- Animal Info Modal -->
+			<div class="modal fade myRescueModal" id="myRescueModal_{{ x.id }}" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">{{ x.name }}</h4>
+						</div>
+						<div class="modal-body">
+							<p>{{ x.writeUp }}</p>
+                            
+							<hr/>
+                            
+                            <div>
+                                <div class="col-sm-6">
+                                    <pre><strong>Species:</strong> {{ x.species }}</pre>
+                                </div>
+                                <div class="col-sm-6">
+                                    <pre><strong>Breed:</strong> {{ x.breed }}</pre>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="col-sm-6">
+                                    <pre><strong>Size:</strong> {{ x.aSize }}</pre>
+                                </div>
+                                <div class="col-sm-6">
+                                    <pre><strong>Age:</strong> {{ x.age }}</pre>
+                                </div>
+                            </div>
+                            <div>
+                            	<div class="col-sm-4">
+                                    <pre><strong>Sex:</strong> {{ x.sex }}</pre>
+                                </div>
+                                <div class="col-sm-4">
+                                    <pre><strong>Fixed:</strong> {{ x.fixed }}</pre>
+                                </div>
+                                <div class="col-sm-4">
+                                    <pre><strong>Found:</strong> {{ x.monthFound }}, {{ x.yearFound }}</pre>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#adoptForm_{{ x.id }}">Adopt</a></li>
+								<li><a data-toggle="tab" href="#fosterForm_{{ x.id }}">Foster</a></li>
+								<li><a data-toggle="tab" href="#sponsorForm_{{ x.id }}">Sponsor</a></li>
+							</ul>
+							<div class="tab-content">
+								<div id="adoptForm_{{ x.id }}" class="tab-pane fade in active">
+									<button class="btn btn-default btn-sm" ng-click="viewAdoptInfo()"><strong>More Info</strong></button>
+									<div ng-show="showAdoptInfo">
+										<br/>
+										<p>
+											When you arrive at the Richmond SPCA, you'll be asked to fill out an Adopter Survey. This one-page survey gathers information about your expectations of pet ownership and helps us determine which animals might best suit your lifestyle. Based on the results of the survey, you'll receive a color-coded Guest Pass to help guide you to cats or dogs that best meet your expectations.
+										</p>
+										<h5>Adoption Fee:</h5>
+										<p>
+											$110 per dog or cat of any age; when you adopt two pets on the same day, the fee is $200. Adoption fee includes spay or neuter procedure, age-appropriate vaccinations, free behavior helpline support, a packet of valuable discount coupons and special offers, and more! In addition, all pets adopted from the Richmond SPCA will be microchipped prior to adx. A microchip is inserted under your pet's skin and serves as a permanent form of identification. Registration with 24PetWatch for the first year is included. All Richmond SPCA alumni (and altered housemates) also qualify to become clients of the Clinic for Compassionate Care.
+										</p>
+										<h5>When Scheduled, Please Bring:</h5>
+										<ul>
+											<li>Picture ID with your current address (if current address not available, please bring current utility bill).</li>
+											<li>Proof of age (you must be 18 or older to adopt a pet from the Richmond SPCA).</li>
+											<li>Proper form of payment (cash, credit/debit card, money order, Richmond SPCA gift card). Checks are not an accepted form of payment.</li>
+											<li>A carrier for your adopted kitty or a leash and collar for your adopted dog. These and many more wonderful items for your new pet may also be purchased in our gift shop.</li>
+										</ul>
+									</div>
+									<form class="form-horizontal adoptForm" role="form">
+										<fieldset>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="formData.values.name" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="formData.values.phone" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="formData.values.addr1" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="formData.values.addr2">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-4">
+													<input id="city" type="input" class="form-control" placeholder="City" ng-model="formData.values.city" required>
+												</div>
+												<div class="col-sm-4">
+													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="formData.values.state" required></select>
+												</div>
+												<div class="col-sm-4">
+													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="formData.values.zip" required>
+												</div>
+											</div>
+											<div class="form-group text-center">
+												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'Adopted' )">Submit Adoption Inquiry</button>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<div id="fosterForm_{{ x.id }}" class="tab-pane fade">
+									<button class="btn btn-default btn-sm" ng-click="viewFosterInfo()"><strong>More Info</strong></button>
+									<div ng-show="showFosterInfo">
+										<br/>
+										<p>
+											When you arrive at the Richmond SPCA, you'll be asked to fill out an Adopter Survey. This one-page survey gathers information about your expectations of pet ownership and helps us determine which animals might best suit your lifestyle. Based on the results of the survey, you'll receive a color-coded Guest Pass to help guide you to cats or dogs that best meet your expectations.
+										</p>
+										<h5>When Scheduled, Please Bring:</h5>
+										<ul>
+											<li>Picture ID with your current address (if current address not available, please bring current utility bill).</li>
+											<li>Proof of age (you must be 18 or older to adopt a pet from the Richmond SPCA).</li>
+											<li>Proper form of payment (cash, credit/debit card, money order, Richmond SPCA gift card). Checks are not an accepted form of payment.</li>
+											<li>A carrier for your adopted kitty or a leash and collar for your adopted dog. These and many more wonderful items for your new pet may also be purchased in our gift shop.</li>
+										</ul>
+									</div>
+									<form class="form-horizontal adoptForm" role="form">
+										<fieldset>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="formData.values.name" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="formData.values.phone" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-6">
+													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="formData.values.addr1" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="formData.values.addr2">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-4">
+													<input id="city" type="input" class="form-control" placeholder="City" ng-model="formData.values.city" required>
+												</div>
+												<div class="col-sm-4">
+													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="formData.values.state" required></select>
+												</div>
+												<div class="col-sm-4">
+													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="formData.values.zip" required>
+												</div>
+											</div>
+											<div class="form-group text-center">
+												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'Fostered' )">Submit Foster Inquiry</button>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								<div id="sponsorForm_{{ x.id }}" class="tab-pane fade">
+									<button class="btn btn-default btn-sm" ng-click="viewSponsorInfo()"><strong>More Info</strong></button>
+									<div ng-show="showSponsorInfo">
+										<br/>
+										<p>
+											Not in a position to adopt or foster a dog? Have you thought about Sponsoring a Dog? They need your help and, with a monthly payment, they can get it.
+										</p>
+										<h5>The money that you donate will go towards:</h5>
+										<ul>
+											<li>Spaying/Neutering the dog</li>
+											<li>Medical needs of the dog (rabies vaccinations, booster shots, heartworm preventative and flea preventative)</li>
+											<li>Quality food for the dog</li>
+										</ul>
+										<h5>With your monthly sponsorship, you will receive:</h5>
+										<ul>
+											<li>A Picture of the dog</li>
+											<li>A Story about the dog</li>
+											<li>Monthly updates on the dog</li>
+											<li>Notice if the dog is adopted</li>
+										</ul>
+									</div>
+                                    <form class="form-horizontal getInTouchForms" role="form">
+                                        <fieldset>
+                                            <div class="form-group">
+												<div class="col-sm-6">
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+												</div>
+												<div class="col-sm-6">
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+												</div>
+											</div>
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <select class="form-control" id="oneTimeDonation" ng-model="formData.values.donation" required>
+                                                        <option value="" disabled selected>Select Donation Type</option>
+                                                        <option ng-repeat="x in formData.options.donation">{{x.value}}</option>
+                                                    </select>
+                                                </div>
+                                                <div id="sponsorInput" class="input-group col-sm-6">
+                                                    <span class="input-group-addon">$</span>
+                                                    <input class="form-control" type="number" min="1.00" step="0.01" ng-model="formData.values.amount" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="formData.values.name" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="formData.values.number" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-4">
+                                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="formData.values.month" required>
+                                                        <option value="" disabled selected>Month</option>
+                                                        <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control" name="expiry-year" ng-model="formData.values.year" required>
+                                                        <option value="" disabled selected>Year</option>
+                                                        <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="formData.values.cvv" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <button type="submit" class="btn btn-primary" ng-click="attemptSponsor()">Sponsor</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Content -->
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myRescueModal_{{ x.id }}">
+						<span class="glyphicon glyphicon-resize-full"></span>&nbsp;&nbsp;{{ x.name }}
+					</button>
+				</div>
+
+				<div class="panel-body">
+					<!-- Carousel -->
+					<div id="mySearchCarousel{{ x.id }}" class="carousel slide mySearchCarousel" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active searchCarouselImg">
+								<img src="{{ x.photos[0].photo }}" class="img-responsive center-block" alt="Image">
+							</div>
+
+							<div class="item searchCarouselImg" ng-repeat="y in x.photos" ng-if="$index > 0">
+								<img src="{{ y.photo }}" class="img-responsive center-block" alt="Image">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control mySearchCarousel" href="#mySearchCarousel{{ x.id }}" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control mySearchCarousel" href="#mySearchCarousel{{ x.id }}" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<pre><strong>Breed:</strong> {{ x.breed }}</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- SUCCESS STORIES SECTION -->
+<section id="successStoriesSection" class="container-fluid">
+	<div class="row text-center">
+		<h2>Success Stories</h2>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4" ng-repeat="x in adoptedAnimals">
+			<div class="panel panel-primary">
+				<div class="panel-heading">{{ x.name }}</div>
+				<div class="panel-body">
+					<!-- Carousel -->
+					<div id="mySearchCarousel_{{ x.id }}" class="carousel slide mySearchCarousel" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active searchCarouselImg">
+								<img src="{{ x.photos[0].photo }}" class="img-responsive center-block" alt="Image">
+							</div>
+
+							<div class="item searchCarouselImg" ng-repeat="y in x.photos" ng-if="$index > 0">
+								<img src="{{ y.photo }}" class="img-responsive center-block" alt="Chania">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#mySearchCarousel_{{ x.id }}" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#mySearchCarousel_{{ x.id }}" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<pre><strong>Rescued:</strong> {{ x.monthRescued }}, {{ x.yearRescued }}</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- ABOUT US SECTION -->
+<section id="aboutUsSection" class="container-fluid text-center">
+	<div class="row text-center">
+		<h2>About Us</h2>
+		<h5>We are a non-profit organization dependent on donations.</h5>
+		<h5>Thank you for your support!</h5>
+	</div>
+	<div class="row text-left">
+		<div class="col-sm-3">
+			<p>Angel Dogs is an all volunteer organization. We are a small organization that rescues dogs from local animal shelters and other places.</p>
+			<p>We typically keep around fifteen dogs at a time. We provide all necessary medical treatments including spaying or neutering, heartworm, and anything the veternarian recommends.</p>
+			<p>Once we rescue a dog, that dog will stay with us until he/she finds a good home.</p>
+			<p>We can use any type of assistance you can provide, such as volunteer dog handlers, foster homes for dogs, or donations of food or money.</p>
+		</div>
+		<div class="col-sm-6">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#emailUs" role="tab" data-toggle="tab">Email Us</a></li>
+				<li><a href="#donate" role="tab" data-toggle="tab">Donate</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="emailUs">
+					<form class="form-horizontal getInTouchForms" role="form">
+						<feildset>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+                                </div>
+                            </div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<select class="form-control col-sm-9 " id="subject" ng-model="formData.values.subject" required>
+										<option value="" disabled selected>Select Subject</option>
+										<option ng-repeat="x in formData.options.subject">{{ x.value }}</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<textarea class="form-control" rows="5" placeholder="Email Body" ng-model="formData.values.body" required></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-group text-center">
+									<!-- angeldogs@helpangeldogs.org -->
+									<button type="submit" class="btn btn-primary" ng-click="sendEmail()">Send</button>
+								</div>
+							</div>
+						</feildset>
+					</form>
+				</div>
+                <div class="tab-pane" id="donate">
+					<form class="form-horizontal getInTouchForms" role="form">
+						<fieldset>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<select class="form-control" id="oneTimeDonation" ng-model="formData.values.donation" required>
+										<option value="" disabled selected>Select Donation Type</option>
+										<option ng-repeat="x in formData.options.donation">{{ x.value }}</option>
+									</select>
+								</div>
+                                <div id="sponsorInput" class="input-group col-sm-6">
+									<span class="input-group-addon">$</span>
+									<input class="form-control" type="number" min="1.00" step="0.01" ng-model="formData.values.amount" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="formData.values.name" required>
+								</div>
+                                <div class="col-sm-6">
+									<input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="formData.values.number" required>
+								</div>
+							</div>
+							<div class="form-group">
+                                <div class="col-sm-4">
+                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="formData.values.month" required>
+                                        <option value="" disabled selected>Month</option>
+                                        <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="expiry-year" ng-model="formData.values.year" required>
+                                        <option value="" disabled selected>Year</option>
+                                        <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="formData.values.cvv" required>
+                                </div>
+                            </div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-primary" ng-click="attemptDonation()">Donate</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<p>We hold weekly adoption stands at different local stores such as Petco and Petsmart.</p>
+			<p>If you wish to make a financial donation, please remember we are a registered non-profit tax exempt organization with all donations going to the care and handling of our dogs.</p>
+			<p>The money that you donate towards sponsoring a dog will go towards:</p>
+			<ul>
+				<li>Spaying/Neutering the dog</li>
+				<li>Medical needs of the dog (rabies vaccinations, booster shots, heartworm preventative and flea preventative)</li>
+				<li>Quality food for the dog</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+    
+<!-- Footer -->
+<footer class="container-fluid text-center">
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="notificationsEmail">Get New Arrival Notifications:</label>
+			<input type="email" class="form-control" id="notificationsEmail" placeholder="Email Address" size="34" ng-model="formData.values.email1" required>
+            <input type="email" class="form-control" id="notificationsEmailVer" placeholder="Verify Email Address" size="34" ng-model="formData.values.email2" required>
+		</div>
+		<div class="form-group">
+			<button type="success" class="btn btn-primary">Sign Up</button>
+		</div>
+	</form>
+</footer>
+
+    
+</body> <!-- END BODY -->
+</html> <!-- END HTML -->
