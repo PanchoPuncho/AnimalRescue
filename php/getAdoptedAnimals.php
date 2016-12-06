@@ -1,34 +1,27 @@
 <?php
-    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
-    $dbuser = "franciscocuevas";
-    $dbpass = "Juan1985";
-    $dbname = "ebdb";
-    $dbport = 3306;
-
     // Create connection
-    echo "Attempting connection..."
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
-    echo "Connected! :)"
+    $con = mysqli_connect( 'aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306);
     
     // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    if ( mysqli_connect_errno() ) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql = "select * from Animal where status='Adopted' order by name";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM Animal WHERE status='Adopted' ORDER BY name";
+    $result = mysqli_query( $con, $sql );
     
+    $numResults = mysqli_num_rows( $result );
+    $counter = 0;
+
     echo "{ \"animals\":[";
-    if ($result->num_rows > 0) {
-        // output data of each row
-        for ($x = 0; $x < ($result->num_rows - 1); $x++) {
-            $row = $result->fetch_assoc();
+    while ( $row = mysqli_fetch_array( $result ) ) {
+        if ( ++$counter == $numResults ) {
+            echo " {\"id\":\"".$row["id"]."\",\"name\":\"".$row["name"]."\",\"writeUp\":\"".$row["writeUp"]."\",\"species\":\"".$row["species"]."\",\"breed\":\"".$row["breed"]."\",\"aSize\":\"".$row["aSize"]."\",\"sex\":\"".$row["sex"]."\",\"fixed\":\"".$row["fixed"]."\",\"status\":\"".$row["status"]."\",\"rescuerID\":\"".$row["rescuerID"]."\",\"monthRescued\":\"".$row["monthRescued"]."\",\"yearRescued\":\"".$row["yearRescued"]."\",\"monthBorn\":\"".$row["monthBorn"]."\",\"yearBorn\":\"".$row["yearBorn"]."\",\"monthFound\":\"".$row["monthFound"]."\",\"yearFound\":\"".$row["yearFound"]."\",\"age\":\"".$row["age"]."\",\"years\":\"".$row["years"]."\",\"photos\":\"".$row["photos"]."\"} ";
+        } else {
             echo " {\"id\":\"".$row["id"]."\",\"name\":\"".$row["name"]."\",\"writeUp\":\"".$row["writeUp"]."\",\"species\":\"".$row["species"]."\",\"breed\":\"".$row["breed"]."\",\"aSize\":\"".$row["aSize"]."\",\"sex\":\"".$row["sex"]."\",\"fixed\":\"".$row["fixed"]."\",\"status\":\"".$row["status"]."\",\"rescuerID\":\"".$row["rescuerID"]."\",\"monthRescued\":\"".$row["monthRescued"]."\",\"yearRescued\":\"".$row["yearRescued"]."\",\"monthBorn\":\"".$row["monthBorn"]."\",\"yearBorn\":\"".$row["yearBorn"]."\",\"monthFound\":\"".$row["monthFound"]."\",\"yearFound\":\"".$row["yearFound"]."\",\"age\":\"".$row["age"]."\",\"years\":\"".$row["years"]."\",\"photos\":\"".$row["photos"]."\"}, ";
         }
-        $row = $result->fetch_assoc();
-        echo " {\"id\":\"".$row["id"]."\",\"name\":\"".$row["name"]."\",\"writeUp\":\"".$row["writeUp"]."\",\"species\":\"".$row["species"]."\",\"breed\":\"".$row["breed"]."\",\"aSize\":\"".$row["aSize"]."\",\"sex\":\"".$row["sex"]."\",\"fixed\":\"".$row["fixed"]."\",\"status\":\"".$row["status"]."\",\"rescuerID\":\"".$row["rescuerID"]."\",\"monthRescued\":\"".$row["monthRescued"]."\",\"yearRescued\":\"".$row["yearRescued"]."\",\"monthBorn\":\"".$row["monthBorn"]."\",\"yearBorn\":\"".$row["yearBorn"]."\",\"monthFound\":\"".$row["monthFound"]."\",\"yearFound\":\"".$row["yearFound"]."\",\"age\":\"".$row["age"]."\",\"years\":\"".$row["years"]."\",\"photos\":\"".$row["photos"]."\"} ";
     }
     echo "] }";
 
-    $conn->close();
+    mysqli_close( $con );
 ?>
