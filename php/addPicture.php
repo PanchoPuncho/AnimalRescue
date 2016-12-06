@@ -1,11 +1,15 @@
 <?php
-    $servername = "localhost";
-    $username = "turninq2";
-    $password = "Buttercup12!";
-    $dbname = "turninq2_francisco";
+    $dbhost = "aa1lxtczcxw42lh.cjcihvs13gvz.us-west-2.rds.amazonaws.com";
+    $dbuser = "franciscocuevas";
+    $dbpass = "Juan1985";
+    $dbname = "ebdb";
+    $dbport = 3306;
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    echo "Attempting connection..."
+    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport);
+    echo "Connected! :)"
+    
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
