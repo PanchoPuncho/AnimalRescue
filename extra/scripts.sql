@@ -125,7 +125,10 @@ select * from Picture;
 delete from Webuser where id!='000000';
 select * from Webuser;
 
-
+# Clear testing
+delete from Picture where id='111111';
+delete from Animal where id='111111';
+delete from Webuser where id='111111';
 
 
 

@@ -7,7 +7,15 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql = "SELECT photo FROM Picture WHERE animalID=".$_GET['id'];
+    if ( $_GET['id'] == "null" || $_GET['id'] == "" ) {
+        //exit( "Invalid value for id" );
+        $sql = "SELECT photo FROM Picture";
+    } else {
+        $id = "\"".$_GET['id']."\"";
+        $sql = "SELECT photo FROM Picture WHERE animalID=".$id."";
+    }
+
+    
     $result = mysqli_query( $con, $sql );
 
     $numResults = mysqli_num_rows( $result );
