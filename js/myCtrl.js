@@ -159,7 +159,7 @@ app.controller("myCtrl", function ($scope, $http) {
         } else {
             console.log("Adding new user...");
             // Calculate new user id (future see if user exists)
-            var numUsers = "", userID = "", getURL = "http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/getNumUsers.php";
+            var numUsers = "", userID = "", getURL = "/php/getNumUsers.php";
             $http.get(getURL)
                 .then(function (response) {
                     console.log("Number of users received!");
@@ -184,7 +184,7 @@ app.controller("myCtrl", function ($scope, $http) {
                     }
 
                     // Add the user to the database
-                    getURL = "http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/addUser.php";
+                    getURL = "/php/addUser.php";
                     getURL = getURL + "?id=" + userID;
                     getURL = getURL + "&fullName=" + $scope.formData.values.name;
                     getURL = getURL + "&phone=" + $scope.formData.values.phone;
@@ -235,7 +235,7 @@ app.controller("myCtrl", function ($scope, $http) {
                         }
 
                         console.log("Updating animal...");
-                        getURL = "http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/adoptAnimal.php";
+                        getURL = "/php/adoptAnimal.php";
                         getURL = getURL + "?id=" + animalID;
                         angular.forEach($scope.animalsInNeed, function (iter) {
                             if (iter.id === animalID) {
@@ -530,7 +530,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.getPhotos = function (option) {
         if (option === "animalsInNeed") {
             angular.forEach($scope.origAnimalsInNeed, function (iter) {
-                var url = "http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/getPhotos.php?id=" + iter.id;
+                var url = "/php/getPhotos.php?id=" + iter.id;
                 $http.get(url)
                     .then(function (response) {
                         iter.photos = response.data.photos;
@@ -539,7 +539,7 @@ app.controller("myCtrl", function ($scope, $http) {
             $scope.filter();
         } else if (option === "adoptedAnimals") {
             angular.forEach($scope.adoptedAnimals, function (iter) {
-                var url = "http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/getPhotos.php?id=" + iter.id;
+                var url = "/php/getPhotos.php?id=" + iter.id;
                 $http.get(url)
                     .then(function (response) {
                         iter.photos = response.data.photos;
@@ -637,7 +637,7 @@ app.controller("myCtrl", function ($scope, $http) {
 
 
     // Get the animals in need from the database (sheltered, fostered)
-    $http.get("http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/getAnimalsInNeed.php")
+    $http.get("/php/getAnimalsInNeed.php")
         .then(function (response) {
             $scope.origAnimalsInNeed = response.data.animals;
             $scope.getPhotos("animalsInNeed");
@@ -646,7 +646,7 @@ app.controller("myCtrl", function ($scope, $http) {
         });
 
     // Get the adopted animals from the database (adopted)
-    $http.get("http://sample-env.38frpu7gpd.us-west-2.elasticbeanstalk.com/php/getAdoptedAnimals.php")
+    $http.get("/php/getAdoptedAnimals.php")
     .then(function (response) {
         $scope.adoptedAnimals = response.data.animals;
         $scope.getPhotos("adoptedAnimals");

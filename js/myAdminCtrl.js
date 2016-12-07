@@ -166,7 +166,7 @@ app.controller("myAdminCtrl", function ($scope, $http) {
      **/
     $scope.addPicture = function () {
         console.log("Adding new picture...");
-        var numPics = "", photoID = "", getURL = "http://turningthetassel.com/francisco/angel_dogs/php/getNumPics.php";
+        var numPics = "", photoID = "", getURL = "/php/getNumPics.php";
         $http.get(getURL)
             .then(function (response) {
                 // Get the number of pictures
@@ -189,7 +189,7 @@ app.controller("myAdminCtrl", function ($scope, $http) {
                 }
 
                 // Add the image to the database
-                getURL = "http://turningthetassel.com/francisco/angel_dogs/php/addPicture.php";
+                getURL = "/php/addPicture.php";
                 getURL = getURL + "?id=" + photoID;
                 getURL = getURL + "&animalID=" + $scope.formData.values.id;
                 getURL = getURL + "&photo=uploads/" + $scope.formData.values.photo;
@@ -214,7 +214,7 @@ app.controller("myAdminCtrl", function ($scope, $http) {
         console.log("Adding new animal...");
 
         // Add the image to the database
-        var getURL = "http://turningthetassel.com/francisco/angel_dogs/php/addAnimal.php";
+        var getURL = "/php/addAnimal.php";
         getURL = getURL + "?id=" + $scope.formData.values.id;
         getURL = getURL + "&name=" + $scope.formData.values.name;
         getURL = getURL + "&writeUp=" + $scope.formData.values.writeUp;
@@ -405,39 +405,45 @@ app.controller("myAdminCtrl", function ($scope, $http) {
      *
      **/
     $scope.updateAnimal = function () {
-        console.log("Updating existing animal...");
+        console.log("Updating existing animal: ");
 
-        var getURL = "http://turningthetassel.com/francisco/angel_dogs/php/updateAnimal.php";
-        getURL = getURL + "?id=" + $scope.formData.values.id;
-        getURL = getURL + "&name=" + $scope.formData.values.name;
-        getURL = getURL + "&writeUp=" + $scope.formData.values.writeUp;
-        getURL = getURL + "&species=" + $scope.formData.values.species;
-        getURL = getURL + "&breed=" + $scope.formData.values.breed;
-        getURL = getURL + "&sex=" + $scope.formData.values.sex;
-        getURL = getURL + "&monthBorn=" + $scope.formData.values.monthBorn;
-        getURL = getURL + "&yearBorn=" + $scope.formData.values.yearBorn;
-        getURL = getURL + "&aSize=" + $scope.formData.values.aSize;
-        getURL = getURL + "&monthFound=" + $scope.formData.values.monthFound;
-        getURL = getURL + "&yearFound=" + $scope.formData.values.yearFound;
-        getURL = getURL + "&fixed=" + $scope.formData.values.fixed;
-        getURL = getURL + "&status=" + $scope.formData.values.status;
-        getURL = getURL + "&rescuerID=" + $scope.formData.values.rescuerID;
-        getURL = getURL + "&monthRescued=" + $scope.formData.values.monthRescued;
-        getURL = getURL + "&yearRescued=" + $scope.formData.values.yearRescued;
-        getURL = getURL + "&age=" + $scope.formData.values.age;
-        getURL = getURL + "&years=" + $scope.formData.values.years;
-        getURL = getURL + "&photos=" + $scope.formData.values.photos;
-        $http({
-            method: 'GET',
-            url: getURL,
-            dataType: 'text json'
-        }).then(function successCallback(response) {
-            // this callback will be called asynchronously when the response is available
-            console.log("Animal updated successfully!");
-        }, function errorCallback(response) {
-            // this callback will be called asynchronously when the get() command fails
-            console.log(status + " " + getURL);
-        });
+        if ( $scope != null && $scope.formData != null && $scope.formData.values != null ) {
+            console.log("Animal: " + JSON.stringify( $scope.formData.values, undefined, 2 ));
+
+            var getURL = "/php/updateAnimal.php";
+            getURL = getURL + "?id=" + $scope.formData.values.id;
+            getURL = getURL + "&name=" + $scope.formData.values.name;
+            getURL = getURL + "&writeUp=" + $scope.formData.values.writeUp;
+            getURL = getURL + "&species=" + $scope.formData.values.species;
+            getURL = getURL + "&breed=" + $scope.formData.values.breed;
+            getURL = getURL + "&sex=" + $scope.formData.values.sex;
+            getURL = getURL + "&monthBorn=" + $scope.formData.values.monthBorn;
+            getURL = getURL + "&yearBorn=" + $scope.formData.values.yearBorn;
+            getURL = getURL + "&aSize=" + $scope.formData.values.aSize;
+            getURL = getURL + "&monthFound=" + $scope.formData.values.monthFound;
+            getURL = getURL + "&yearFound=" + $scope.formData.values.yearFound;
+            getURL = getURL + "&fixed=" + $scope.formData.values.fixed;
+            getURL = getURL + "&status=" + $scope.formData.values.status;
+            getURL = getURL + "&rescuerID=" + $scope.formData.values.rescuerID;
+            getURL = getURL + "&monthRescued=" + $scope.formData.values.monthRescued;
+            getURL = getURL + "&yearRescued=" + $scope.formData.values.yearRescued;
+            getURL = getURL + "&age=" + $scope.formData.values.age;
+            getURL = getURL + "&years=" + $scope.formData.values.years;
+            getURL = getURL + "&photos=" + $scope.formData.values.photos;
+            $http({
+                method: 'GET',
+                url: getURL,
+                dataType: 'text json'
+            }).then(function successCallback(response) {
+                // this callback will be called asynchronously when the response is available
+                console.log("Animal updated successfully!");
+            }, function errorCallback(response) {
+                // this callback will be called asynchronously when the get() command fails
+                console.log(status + " " + getURL);
+            });
+        } else {
+            alert("Bad...really bad...");
+        }       
     };
 
 
@@ -448,7 +454,7 @@ app.controller("myAdminCtrl", function ($scope, $http) {
 
     // Get the animals from the database
     console.log("Getting animals from database...");
-    $http.get("http://turningthetassel.com/francisco/angel_dogs/php/getAnimals.php")
+    $http.get("/php/getAnimals.php")
         .then(function (response) {
             $scope.animals = response.data.animals;
             $scope.calculateNames();
@@ -457,4 +463,67 @@ app.controller("myAdminCtrl", function ($scope, $http) {
         });
 });
 
+
+
+/****************** EXTRA **********************/
+
+
+
+/*if ( $scope.formData.values.id === "null" ) {
+                $scope.formData.values.id = null;
+            }
+            if ( $scope.formData.values.name === "null" ) {
+                $scope.formData.values.name = null;
+            }
+            if ( $scope.formData.values.writeUp === "null" ) {
+                $scope.formData.values.writeUp = null;
+            }
+            if ( $scope.formData.values.species === "null" ) {
+                $scope.formData.values.species = null;
+            }
+            if ( $scope.formData.values.breed === "null" ) {
+                $scope.formData.values.breed = null;
+            }
+            if ( $scope.formData.values.sex === "null" ) {
+                $scope.formData.values.sex = null;
+            }
+            if ( $scope.formData.values.monthBorn === "null" ) {
+                $scope.formData.values.monthBorn = null;
+            }
+            if ( $scope.formData.values.yearBorn === "null" ) {
+                $scope.formData.values.yearBorn = null;
+            }
+            if ( $scope.formData.values.aSize === "null" ) {
+                $scope.formData.values.aSize = null;
+            }
+            if ( $scope.formData.values.monthFound === "null" ) {
+                $scope.formData.values.monthFound = null;
+            }
+            if ( $scope.formData.values.yearFound === "null" ) {
+                $scope.formData.values.yearFound = null;
+            }
+            if ( $scope.formData.values.fixed === "null" ) {
+                $scope.formData.values.fixed = null;
+            }
+            if ( $scope.formData.values.status === "null" ) {
+                $scope.formData.values.status = null;
+            }
+            if ( $scope.formData.values.rescuerID === "null" ) {
+                $scope.formData.values.rescuerID = null;
+            }
+            if ( $scope.formData.values.monthRescued === "null" ) {
+                $scope.formData.values.monthRescued = null;
+            }
+            if ( $scope.formData.values.yearRescued === "null" ) {
+                $scope.formData.values.yearRescued = null;
+            }
+            if ( $scope.formData.values.age === "null" ) {
+                $scope.formData.values.age = null;
+            }
+            if ( $scope.formData.values.years === "null" ) {
+                $scope.formData.values.years = null;
+            }
+            if ( $scope.formData.values.photos === "null" ) {
+                $scope.formData.values.photos = null;
+            }*/
 
