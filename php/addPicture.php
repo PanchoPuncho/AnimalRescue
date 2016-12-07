@@ -23,7 +23,7 @@
         $photo = "\"".$_GET['photo']."\"";
     }
 
-    $sql = "INSERT INTO Picture VALUES (".$id.", ".$animalID.", ".$photo.")";
+    $sql = "INSERT INTO Picture VALUES (".$id.", ".$animalID.", ".$photo.", (select now()))";
 
     if ( mysqli_query( $con, $sql ) === TRUE ) {
         echo "{ \"message\":\"New record created successfully\" }";

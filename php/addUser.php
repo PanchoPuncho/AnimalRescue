@@ -53,7 +53,7 @@
         $zip = "\"".$_GET['zip']."\"";
     }
 
-    $sql = "INSERT INTO Webuser VALUES (".$id.", ".$fullName.", ".$phone.", ".$email.", ".$addr1.", ".$addr2.", ".$city.", ".$state.", ".$zip.")";
+    $sql = "INSERT INTO Webuser VALUES (".$id.", ".$fullName.", ".$phone.", ".$email.", ".$addr1.", ".$addr2.", ".$city.", ".$state.", ".$zip.", (select now()))";
 
     if ( mysqli_query( $con, $sql ) === TRUE ) {
         echo "{ \"message\":\"New record created successfully\" }";

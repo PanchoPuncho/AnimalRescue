@@ -19,6 +19,13 @@ drop table Webuser;
 
 
 -- Create tables with primary key and restrictions
+create table Admin (
+    id      char(6)     not null,
+    user    varchar(32) not null,
+    pass    varchar(13) not null,
+    primary key (id)
+);
+
 create table Webuser (
     id          char(6)     not null,
     fullName    varchar(32) not null,
@@ -29,6 +36,7 @@ create table Webuser (
     city        varchar(32) not null,
     state       char(2)     not null,
     zip         char(5)     not null,
+    ts          TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
     primary key (id)
 );
 
@@ -52,14 +60,18 @@ create table Animal (
     age         varchar(32),            -- stub
     years       int,                    -- stub
     photos      char(1),                -- stub
-    primary key (id)
+    ts          TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
+    primary key (id),
+    foreign key (rescuerID) references Webuser(id)
 );
 
 create table Picture (
     id          char(6)     not null,   -- 000000, etc
     animalID    char(6)     not null,   -- 000000, etc
     photo       varchar(64) not null,   -- images/imageName.png, etc
-    primary key (id)
+    ts          TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
+    primary key (id),
+    foreign key (animalID) references Animal(id)
 );
 -- Create tables
 
@@ -74,30 +86,30 @@ alter table Picture add foreign key (animalID) references Animal(id);
 
 
 -- Insert data
-insert into Webuser values ('000000', 'Francisco Cuevas', '(123)456-7890', 'cuevas500@gmail.com', '24897 T.6 SW', null, 'Mattawa', 'WA', '99349');
-insert into Animal values ('000000', 'Zuko', 'Sleeps all night, naps all day.', 'Canine', 'Cane Corso Mix', 'Male', 'July', '2012', 'Large (between 60 and 100 lbs)', 'January', '2015', 'Yes', 'Adopted', '000000', 'July', '2015', null, null, null);
-insert into Animal values ('000001', 'Brownie', 'Loves snow. Loves water. Loves food.', 'Canine', 'Retriever', 'Male', 'March', '2007', 'Medium (between 30 and 60 lbs)', 'January', '2010', 'No', 'Adopted', '000000', 'March', '2010', null, null, null);
-insert into Animal values ('000002', 'Azula', 'Daughter of a fire lord. Princess.', 'Canine', 'Pitbull', 'Female', 'September', '2009', 'Medium (between 30 and 60 lbs)', 'December', '2015', 'Yes', 'Fostered', null, null, null, null, null, null);
-insert into Animal values ('000003', 'Bubba', 'Hi, my name is Bubba. I am a hound mix that is about 3 years old. I am very friendly and have plenty of pep in my step. I like to go for walks and am very good on a leash. I get along well with other dogs and am house/crate trained too.', 'Canine', 'Hound Mix', 'Male', 'April', '2013', 'Medium (between 30 and 60 lbs)', 'March', '2014', 'Yes', 'Sheltered', null, null, null, null, null, null);
-insert into Animal values ('000004', 'Frank', 'Frank is a 5 year old, 20 pound beagle. He was picked up as a stray in King William County, along with his friend Estelle. Frank is affectionate little boy and good with adults, children, other dogs and cats. He will need some training and patience transitioning from his hunting life to his new life as a family pet. Frank needs a foster home or a forever home. Please be the family to help him make a fresh start.', 'Canine', 'Beagle', 'Male', 'May', '2011', 'Small (between 10 and 30 lbs)', 'June', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null);
-insert into Animal values ('000005', 'Estelle', 'Estelle is a 5 year old, 15 pound beagle. She was picked up as a stray in King William County, along with her friend Frank. Estelle is a sweet little girl and good with adults, children other dogs and cats. She is ready to make the transition from hunting dog to family pet. She will need some training but she is eager to please so she should learn quickly. Estelle needs a foster home or a forever home. Please adopt this darling girl into your family.', 'Canine', 'Beagle', 'Female', 'May', '2011', 'Small (between 10 and 30 lbs)', 'June', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null);
-insert into Animal values ('000006', 'Buster', 'Buster is approximately four year old a very handsome fellow who is a transfer from a shelter in Cumberland. He is a bit reserved but a very well behaved gentleman who is looking for his forever home and walks very well on a leash.', 'Canine', 'Hound Mix', 'Male', 'October', '2010', 'Small (between 10 and 30 lbs)', 'May', '2014', 'Yes', 'Sheltered', null, null, null, null, null, null);
-insert into Animal values ('000007', 'Buddy', 'Hi my name is Buddy I am approximately seven years old and I am looking for a friend to help me lose some weight. I am a very friendly dog that likes to hang out with people watch TV on the couch and I love attention. I was surrendered to the rescue that due to illness could no longer take care of me.', 'Canine', 'Hound Mix', 'Male', 'November', '2008', 'Medium (between 30 and 60 lbs)', 'May', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null);
-insert into Picture values ('000000', '000001', 'uploads/brownie.jpeg');
-insert into Picture values ('000001', '000002', 'uploads/azula.jpg');
-insert into Picture values ('000002', '000000', 'uploads/zukoKiss.jpg');
-insert into Picture values ('000003', '000000', 'uploads/zukoSnowBatman.jpg');
-insert into Picture values ('000004', '000003', 'uploads/bubba1.jpeg');
-insert into Picture values ('000005', '000003', 'uploads/bubba2.jpeg');
-insert into Picture values ('000006', '000003', 'uploads/bubba3.jpeg');
-insert into Picture values ('000007', '000004', 'uploads/frank.jpeg');
-insert into Picture values ('000008', '000005', 'uploads/estelle.jpeg');
-insert into Picture values ('000009', '000006', 'uploads/buster1.jpeg');
-insert into Picture values ('000010', '000006', 'uploads/buster2.jpeg');
-insert into Picture values ('000011', '000006', 'uploads/buster3.jpeg');
-insert into Picture values ('000012', '000007', 'uploads/buddy1.jpeg');
-insert into Picture values ('000013', '000007', 'uploads/buddy2.jpeg');
-insert into Picture values ('000014', '000007', 'uploads/buddy3.jpeg');
+insert into Webuser values ('000000', 'Francisco Cuevas', '(123)456-7890', 'cuevas500@gmail.com', '24897 T.6 SW', null, 'Mattawa', 'WA', '99349', (select now()));
+insert into Animal values ('000000', 'Zuko', 'Sleeps all night, naps all day.', 'Canine', 'Cane Corso Mix', 'Male', 'July', '2012', 'Large (between 60 and 100 lbs)', 'January', '2015', 'Yes', 'Adopted', '000000', 'July', '2015', null, null, null, (select now()));
+insert into Animal values ('000001', 'Brownie', 'Loves snow. Loves water. Loves food.', 'Canine', 'Retriever', 'Male', 'March', '2007', 'Medium (between 30 and 60 lbs)', 'January', '2010', 'No', 'Adopted', '000000', 'March', '2010', null, null, null, (select now()));
+insert into Animal values ('000002', 'Azula', 'Daughter of a fire lord. Princess.', 'Canine', 'Pitbull', 'Female', 'September', '2009', 'Medium (between 30 and 60 lbs)', 'December', '2015', 'Yes', 'Fostered', null, null, null, null, null, null, (select now()));
+insert into Animal values ('000003', 'Bubba', 'Hi, my name is Bubba. I am a hound mix that is about 3 years old. I am very friendly and have plenty of pep in my step. I like to go for walks and am very good on a leash. I get along well with other dogs and am house/crate trained too.', 'Canine', 'Hound Mix', 'Male', 'April', '2013', 'Medium (between 30 and 60 lbs)', 'March', '2014', 'Yes', 'Sheltered', null, null, null, null, null, null, (select now()));
+insert into Animal values ('000004', 'Frank', 'Frank is a 5 year old, 20 pound beagle. He was picked up as a stray in King William County, along with his friend Estelle. Frank is affectionate little boy and good with adults, children, other dogs and cats. He will need some training and patience transitioning from his hunting life to his new life as a family pet. Frank needs a foster home or a forever home. Please be the family to help him make a fresh start.', 'Canine', 'Beagle', 'Male', 'May', '2011', 'Small (between 10 and 30 lbs)', 'June', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null, (select now()));
+insert into Animal values ('000005', 'Estelle', 'Estelle is a 5 year old, 15 pound beagle. She was picked up as a stray in King William County, along with her friend Frank. Estelle is a sweet little girl and good with adults, children other dogs and cats. She is ready to make the transition from hunting dog to family pet. She will need some training but she is eager to please so she should learn quickly. Estelle needs a foster home or a forever home. Please adopt this darling girl into your family.', 'Canine', 'Beagle', 'Female', 'May', '2011', 'Small (between 10 and 30 lbs)', 'June', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null, (select now()));
+insert into Animal values ('000006', 'Buster', 'Buster is approximately four year old a very handsome fellow who is a transfer from a shelter in Cumberland. He is a bit reserved but a very well behaved gentleman who is looking for his forever home and walks very well on a leash.', 'Canine', 'Hound Mix', 'Male', 'October', '2010', 'Small (between 10 and 30 lbs)', 'May', '2014', 'Yes', 'Sheltered', null, null, null, null, null, null, (select now()));
+insert into Animal values ('000007', 'Buddy', 'Hi my name is Buddy I am approximately seven years old and I am looking for a friend to help me lose some weight. I am a very friendly dog that likes to hang out with people watch TV on the couch and I love attention. I was surrendered to the rescue that due to illness could no longer take care of me.', 'Canine', 'Hound Mix', 'Male', 'November', '2008', 'Medium (between 30 and 60 lbs)', 'May', '2015', 'Yes', 'Sheltered', null, null, null, null, null, null, (select now()));
+insert into Picture values ('000000', '000001', 'uploads/brownie.jpeg', (select now()));
+insert into Picture values ('000001', '000002', 'uploads/azula.jpg', (select now()));
+insert into Picture values ('000002', '000000', 'uploads/zukoKiss.jpg', (select now()));
+insert into Picture values ('000003', '000000', 'uploads/zukoSnowBatman.jpg', (select now()));
+insert into Picture values ('000004', '000003', 'uploads/bubba1.jpeg', (select now()));
+insert into Picture values ('000005', '000003', 'uploads/bubba2.jpeg', (select now()));
+insert into Picture values ('000006', '000003', 'uploads/bubba3.jpeg', (select now()));
+insert into Picture values ('000007', '000004', 'uploads/frank.jpeg', (select now()));
+insert into Picture values ('000008', '000005', 'uploads/estelle.jpeg', (select now()));
+insert into Picture values ('000009', '000006', 'uploads/buster1.jpeg', (select now()));
+insert into Picture values ('000010', '000006', 'uploads/buster2.jpeg', (select now()));
+insert into Picture values ('000011', '000006', 'uploads/buster3.jpeg', (select now()));
+insert into Picture values ('000012', '000007', 'uploads/buddy1.jpeg', (select now()));
+insert into Picture values ('000013', '000007', 'uploads/buddy2.jpeg', (select now()));
+insert into Picture values ('000014', '000007', 'uploads/buddy3.jpeg', (select now()));
 -- Insert data
 
 
@@ -133,7 +145,7 @@ delete from Webuser where id='111111';
 
 
 
-
+ALTER TABLE Webuser ADD ts TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP;
 
 
 

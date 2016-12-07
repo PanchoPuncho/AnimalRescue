@@ -103,7 +103,7 @@
 	    $photos = "\"".$_GET['photos']."\"";
 	}
 
-	$sql = "INSERT INTO Animal VALUES (".$id.", ".$name.", ".$writeUp.", ".$species.", ".$breed.", ".$sex.", ".$monthBorn.", ".$yearBorn.", ".$aSize.", ".$monthFound.", ".$yearFound.", ".$fixed.", ".$status.", ".$rescuerID.", ".$monthRescued.", ".$yearRescued.", ".$age.", ".$years.", ".$photos.")";
+	$sql = "INSERT INTO Animal VALUES (".$id.", ".$name.", ".$writeUp.", ".$species.", ".$breed.", ".$sex.", ".$monthBorn.", ".$yearBorn.", ".$aSize.", ".$monthFound.", ".$yearFound.", ".$fixed.", ".$status.", ".$rescuerID.", ".$monthRescued.", ".$yearRescued.", ".$age.", ".$years.", ".$photos.", (select now()))";
 
 	if ( mysqli_query( $con, $sql ) === TRUE ) {
 	    echo "{ \"message\":\"New record created successfully\" }";
