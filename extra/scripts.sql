@@ -6,12 +6,14 @@
 delete from Picture;
 delete from Animal;
 delete from Webuser;
+delete from Admin;
 -- Empty tables
 
 -- Delete tables
 drop table Picture;
 drop table Animal;
 drop table Webuser;
+drop table Admin;
 -- Delete tables
 
 
@@ -86,6 +88,7 @@ alter table Picture add foreign key (animalID) references Animal(id);
 
 
 -- Insert data
+insert into Admin values ('000000', 'user', 'pass');
 insert into Webuser values ('000000', 'Francisco Cuevas', '(123)456-7890', 'cuevas500@gmail.com', '24897 T.6 SW', null, 'Mattawa', 'WA', '99349', (select now()));
 insert into Animal values ('000000', 'Zuko', 'Sleeps all night, naps all day.', 'Canine', 'Cane Corso Mix', 'Male', 'July', '2012', 'Large (between 60 and 100 lbs)', 'January', '2015', 'Yes', 'Adopted', '000000', 'July', '2015', null, null, null, (select now()));
 insert into Animal values ('000001', 'Brownie', 'Loves snow. Loves water. Loves food.', 'Canine', 'Retriever', 'Male', 'March', '2007', 'Medium (between 30 and 60 lbs)', 'January', '2010', 'No', 'Adopted', '000000', 'March', '2010', null, null, null, (select now()));

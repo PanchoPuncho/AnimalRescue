@@ -40,21 +40,6 @@
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="242">
-    <!-- Login Modal -->
-    <div class="modal fade myLoginModal" id="loginModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-body">
-                  <form class="form-signin">
-                    <h2 id="form-signin-heading" class="text-center">Please Sign In</h2>
-                    <input type="username" id="inputEmail" class="form-control" placeholder="Username" ng-model="formData.values.username" required>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="formData.values.password" required>
-                    <button class="btn btn-lg btn-primary btn-block" id="loginButton" ng-click="login()">Sign In</button>
-                  </form>
-                </div>
-            </div>
-        </div>
-    </div>
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -72,7 +57,7 @@
 				<li><a class="page-scroll" href="#aboutUsSection">About Us</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a data-toggle="modal" href="#loginModal"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Admin Account</a></li>
+				<li><a href="/php/super_secret.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Admin Account</a></li>
 			</ul>
 		</div>
 	</div>
@@ -187,9 +172,6 @@
 					<option ng-repeat="x in filterData.options.fixed">{{x.value}}</option>
 				</select>
 			</div>
-			<!--div class="form-group pull-right">
-				<button class="btn btn-default" ng-click="filter()"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Filter</button>
-			</div-->
 		</form>
 	</div>
 

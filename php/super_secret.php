@@ -37,6 +37,24 @@
 </div>
 
 
+<!-- Login Modal -->
+<div class="modal {{modalShow}} myLoginModal" id="loginModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+              <form class="form-signin">
+                <h2 id="form-signin-heading" class="text-center">Please Sign In</h2>
+                <h5 ng-show="modalMessage != null" class="text-center text-danger">{{modalMessage}}</h5>
+                <input type="username" id="inputEmail" class="form-control" placeholder="Username" ng-model="username" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="password" required>
+                <button class="btn btn-lg btn-primary btn-block" id="loginButton" ng-click="login(username,password)">Sign In</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Navigation Bar -->
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="242">
     <div class="container-fluid">
@@ -63,7 +81,7 @@
 <!-- EDIT SECTION -->
 <section id="eventSection" class="container-fluid text-center">
     <div class="row">
-        <h2>Hello there, Admin!</h2>
+        <h2>Hello there, {{adminUser}}!</h2>
         <h4>What changes would you like to make?</h4>
     </div>
     
@@ -166,7 +184,7 @@
                     </div>
                     <div class="form-group">
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary" ng-click="update()">Update</button>
+                            <button type='button' class="btn btn-primary" ng-click="update()">Update</button>
                         </div>
                     </div>
                 </feildset>
