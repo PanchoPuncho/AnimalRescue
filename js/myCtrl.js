@@ -6,7 +6,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.adoptedAnimals = [];
 
     $scope.filterData = {
-        values: {
+        value: {
             age:        null,
             breed:      null,
             fixed:      null,
@@ -20,44 +20,44 @@ app.controller("myCtrl", function ($scope, $http) {
                 /* $scope.calculateBreedOptions() called below */
             ],
             fixed: [
-                {value: 'No'},
-                {value: 'Yes'}
+                {name: 'No'},
+                {name: 'Yes'}
             ],
             sex: [
-                {value: 'Female'},
-                {value: 'Male'}
+                {name: 'Female'},
+                {name: 'Male'}
             ],
             aSize: [
-                {value: 'Extra Small (less than 10 lbs)'},
-                {value: 'Small (between 10 and 30 lbs)'},
-                {value: 'Medium (between 30 and 60 lbs)'},
-                {value: 'Large (between 60 and 100 lbs)'},
-                {value: 'Extra Large (more than 100 lbs)'}
+                {name: 'Extra Small (less than 10 lbs)'},
+                {name: 'Small (between 10 and 30 lbs)'},
+                {name: 'Medium (between 30 and 60 lbs)'},
+                {name: 'Large (between 60 and 100 lbs)'},
+                {name: 'Extra Large (more than 100 lbs)'}
             ],
             species: [
-                {value: 'Canine'},
-                {value: 'Feline'},
-                {value: 'Other'}
+                {name: 'Canine'},
+                {name: 'Feline'},
+                {name: 'Other'}
             ],
             years: [
-                {id: "0", value: '< 1 year old'},
-                {id: "1", value: '1 year old'},
-                {id: "2", value: '2 years old'},
-                {id: "3", value: '3 years old'},
-                {id: "4", value: '4 years old'},
-                {id: "5", value: '5 years old'},
-                {id: "6", value: '6 years old'},
-                {id: "7", value: '7 years old'},
-                {id: "8", value: '8 years old'},
-                {id: "9", value: '9 years old'},
-                {id: "10", value: '10 years old'},
-                {id: "11", value: '> 10 years old'}
+                {id: "0", name: '< 1 year old'},
+                {id: "1", name: '1 year old'},
+                {id: "2", name: '2 years old'},
+                {id: "3", name: '3 years old'},
+                {id: "4", name: '4 years old'},
+                {id: "5", name: '5 years old'},
+                {id: "6", name: '6 years old'},
+                {id: "7", name: '7 years old'},
+                {id: "8", name: '8 years old'},
+                {id: "9", name: '9 years old'},
+                {id: "10", name: '10 years old'},
+                {id: "11", name: '> 10 years old'}
             ]
         }
     };
 
-    $scope.formData = {
-        values: {
+    $scope.data = {
+        value: {
             addr1:      null,
             addr2:      null,
             amount:     10.00,
@@ -83,41 +83,97 @@ app.controller("myCtrl", function ($scope, $http) {
             zip:        null
         },
         options: {
+            breed: [
+                {name: 'Akita'},
+                {name: 'Akita Mix'},
+                {name: 'Beagle'},
+                {name: 'Beagle Mix'},
+                {name: 'Border Collie'},
+                {name: 'Border Collie Mix'},
+                {name: 'Boxer'},
+                {name: 'Boxer Mix'},
+                {name: 'Bulldog'},
+                {name: 'Bulldog Mix'},
+                {name: 'Chihuahua'},
+                {name: 'Chihuahua Mix'},
+                {name: 'Cane Corso'},
+                {name: 'Cane Corso Mix'},
+                {name: 'Corgi'},
+                {name: 'Corgi Mix'},
+                {name: 'Dachshund'},
+                {name: 'Dachshund Mix'},
+                {name: 'German Shepherd'},
+                {name: 'German Shepherd Mix'},
+                {name: 'Golden Retriever'},
+                {name: 'Golden Retriever Mix'},
+                {name: 'Great Dane'},
+                {name: 'Great Dane Mix'},
+                {name: 'Greyhound'},
+                {name: 'Greyhound Mix'},
+                {name: 'Hound'},
+                {name: 'Hound Mix'},
+                {name: 'Husky'},
+                {name: 'Husky Mix'},
+                {name: 'Labrador'},
+                {name: 'Labrador Mix'},
+                {name: 'Malamute'},
+                {name: 'Malamute Mix'},
+                {name: 'Mastiff'},
+                {name: 'Mastiff Mix'},
+                {name: 'Newfoundland'},
+                {name: 'Newfoundland Mix'},
+                {name: 'Pitbull'},
+                {name: 'Pitbull Mix'},
+                {name: 'Pointer'},
+                {name: 'Pointer Mix'},
+                {name: 'Poodle'},
+                {name: 'Poodle Mix'},
+                {name: 'Pug'},
+                {name: 'Pug Mix'},
+                {name: 'Retriever'},
+                {name: 'Retriever Mix'},
+                {name: 'Rottweiler'},
+                {name: 'Rottweiler Mix'},
+                {name: 'Shih Tzu'},
+                {name: 'Shih Tzu Mix'},
+                {name: 'Spaniel'},
+                {name: 'Spaniel Mix'}
+            ],
             donation: [
-                {value: 'One-Time Donation'},
-                {value: 'Monthly Donation'}
+                {name: 'One-Time Donation'},
+                {name: 'Monthly Donation'}
             ],
             month: [
-                {value: 'January'},
-                {value: 'February'},
-                {value: 'March'},
-                {value: 'April'},
-                {value: 'May'},
-                {value: 'June'},
-                {value: 'July'},
-                {value: 'August'},
-                {value: 'September'},
-                {value: 'October'},
-                {value: 'November'},
-                {value: 'December'}
+                {name: 'January'},
+                {name: 'February'},
+                {name: 'March'},
+                {name: 'April'},
+                {name: 'May'},
+                {name: 'June'},
+                {name: 'July'},
+                {name: 'August'},
+                {name: 'September'},
+                {name: 'October'},
+                {name: 'November'},
+                {name: 'December'}
             ],
             subject: [
-                {value: 'Adopt'},
-                {value: 'Donate'},
-                {value: 'Foster'},
-                {value: 'Sponsor'},
-                {value: 'Volunteer'},
-                {value: 'Other'}
+                {name: 'Adopt'},
+                {name: 'Donate'},
+                {name: 'Foster'},
+                {name: 'Sponsor'},
+                {name: 'Volunteer'},
+                {name: 'Other'}
             ],
             year: [
-                {value: '2016'},
-                {value: '2017'},
-                {value: '2018'},
-                {value: '2019'},
-                {value: '2020'},
-                {value: '2021'},
-                {value: '2022'},
-                {value: '2023'}
+                {name: '2016'},
+                {name: '2017'},
+                {name: '2018'},
+                {name: '2019'},
+                {name: '2020'},
+                {name: '2021'},
+                {name: '2022'},
+                {name: '2023'}
             ]
         }
     };
@@ -131,128 +187,90 @@ app.controller("myCtrl", function ($scope, $http) {
     /**
      * Attempt to submit the adoption inquiry
      **/
-    $scope.attemptAdoption = function (animalID, status) {
+    $scope.attemptAdoption = function ( animalID ) {
         console.log("Attempting adoption...");
         
-        if ($scope.formData.values.name === null || $scope.formData.values.name.trim() === '') {
+        if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.phone === null || $scope.formData.values.phone.trim() === '') {
+        } else if ($scope.data.value.phone === null || $scope.data.value.phone.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.email1 === null || $scope.formData.values.email1.trim() === '') {
+        } else if ($scope.data.value.email1 === null || $scope.data.value.email1.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.email2 === null || $scope.formData.values.email2.trim() === '') {
+        } else if ($scope.data.value.email2 === null || $scope.data.value.email2.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.email2 !== $scope.formData.values.email1) {
+        } else if ($scope.data.value.email2 !== $scope.data.value.email1) {
             console.log("Emails do not match!");
             window.alert("Emails do not match!");
-        } else if ($scope.formData.values.addr1 === null || $scope.formData.values.addr1.trim() === '') {
+        } else if ($scope.data.value.addr1 === null || $scope.data.value.addr1.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.city === null || $scope.formData.values.city.trim() === '') {
+        } else if ($scope.data.value.city === null || $scope.data.value.city.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.state === null || $scope.formData.values.state.trim() === '') {
+        } else if ($scope.data.value.state === null || $scope.data.value.state.trim() === '') {
             console.log("Adoption failed!");
-        } else if ($scope.formData.values.zip === null || $scope.formData.values.zip.trim() === '') {
+        } else if ($scope.data.value.zip === null || $scope.data.value.zip.trim() === '') {
             console.log("Adoption failed!");
         } else {
-            console.log("Adding new user...");
+            console.log("Checking if user already exists...");
 
-            var numUsers = "", userID = "", getURL = "/php/getNumUsers.php";
-            $http.get(getURL)
-                .then(function (response) {
-                    console.log("Number of users received!");
+            var getURL = "/php/userExists.php?email=" + $scope.data.value.email1.trim().toLowerCase();
+            $http({
+                method: 'GET',
+                url: getURL,
+                dataType: 'text json'
+            }).then(function successCallback(response) {
+                if ( response.data.user === "" ) {
+                    console.log("Adding new user...");
 
-                    numUsers = response.data.numUsers;
+                    var numUsers = "", userID = "", getURL = "/php/getNumUsers.php";
+                    $http.get(getURL).then(function (response) {
+                        console.log("Number of users received!");
 
-                    if (numUsers < 10) {
-                        userID = '00000' + numUsers;
-                    } else if (numUsers < 100) {
-                        userID = '0000' + numUsers;
-                    } else if (numUsers < 1000) {
-                        userID = '000' + numUsers;
-                    } else if (numUsers < 10000) {
-                        userID = '00' + numUsers;
-                    } else if (numUsers < 100000) {
-                        userID = '0' + numUsers;
-                    } else {
-                        userID = numUsers;
-                    }
+                        numUsers = response.data.numUsers;
 
-                    getURL = "/php/addUser.php";
-                    getURL = getURL + "?id=" + userID.trim();
-                    getURL = getURL + "&fullName=" + $scope.formData.values.name.trim();
-                    getURL = getURL + "&phone=" + $scope.formData.values.phone.trim();
-                    getURL = getURL + "&email=" + $scope.formData.values.email1.trim();
-                    getURL = getURL + "&addr1=" + $scope.formData.values.addr1.trim();
-                    getURL = getURL + "&addr2=" + $scope.formData.values.addr2;
-                    getURL = getURL + "&city=" + $scope.formData.values.city.trim();
-                    getURL = getURL + "&state=" + $scope.formData.values.state.trim();
-                    getURL = getURL + "&zip=" + $scope.formData.values.zip.trim();
-
-                    console.log("URL: " + getURL);
-                    $http({
-                        method: 'GET',
-                        url: getURL,
-                        dataType: 'text json'
-                    }).then(function successCallback(response) {
-                        console.log("User added successfully!");
-                        console.log("Getting date info...");
-
-                        var today = new Date();
-                        var todayMonth = today.getMonth() + 1, month = "";
-                        var todayYear = today.getFullYear();
-                        if (todayMonth === 1) {
-                            month = "January";
-                        } else if (todayMonth === 2) {
-                            month = "February";
-                        } else if (todayMonth === 3) {
-                            month = "March";
-                        } else if (todayMonth === 4) {
-                            month = "April";
-                        } else if (todayMonth === 5) {
-                            month = "May";
-                        } else if (todayMonth === 6) {
-                            month = "June";
-                        } else if (todayMonth === 7) {
-                            month = "July";
-                        } else if (todayMonth === 8) {
-                            month = "August";
-                        } else if (todayMonth === 9) {
-                            month = "September";
-                        } else if (todayMonth === 10) {
-                            month = "October";
-                        } else if (todayMonth === 11) {
-                            month = "November";
-                        } else if (todayMonth === 12) {
-                            month = "December";
+                        if (numUsers < 10) {
+                            userID = '00000' + numUsers;
+                        } else if (numUsers < 100) {
+                            userID = '0000' + numUsers;
+                        } else if (numUsers < 1000) {
+                            userID = '000' + numUsers;
+                        } else if (numUsers < 10000) {
+                            userID = '00' + numUsers;
+                        } else if (numUsers < 100000) {
+                            userID = '0' + numUsers;
+                        } else {
+                            userID = numUsers;
                         }
 
-                        console.log("Updating animal...");
-                        getURL = "/php/adoptAnimal.php";
-                        getURL = getURL + "?id=" + animalID;
-                        angular.forEach($scope.animalsInNeed, function (iter) {
-                            if (iter.id === animalID) {
-                                getURL = getURL + "&status=" + status.trim();
-                                getURL = getURL + "&rescuerID=" + userID.trim();
-                                getURL = getURL + "&monthRescued=" + month.trim();
-                                getURL = getURL + "&yearRescued=" + todayYear;
-                            }
-                        });
+                        getURL = "/php/addUser.php";
+                        getURL = getURL + "?id=" + userID.trim();
+                        getURL = getURL + "&fullName=" + $scope.data.value.name.trim();
+                        getURL = getURL + "&phone=" + $scope.data.value.phone.trim();
+                        getURL = getURL + "&email=" + $scope.data.value.email1.trim().toLowerCase();
+                        getURL = getURL + "&addr1=" + $scope.data.value.addr1.trim();
+                        getURL = getURL + "&addr2=" + $scope.data.value.addr2;
+                        getURL = getURL + "&city=" + $scope.data.value.city.trim();
+                        getURL = getURL + "&state=" + $scope.data.value.state.trim();
+                        getURL = getURL + "&zip=" + $scope.data.value.zip.trim();
+
                         console.log("URL: " + getURL);
                         $http({
                             method: 'GET',
                             url: getURL,
                             dataType: 'text json'
                         }).then(function successCallback(response) {
-                            console.log("Animal updated successfully!");
-                            window.alert("Animal updated successfully!");
-                            window.location.reload();
+                            console.log("User added successfully!");
+                            $scope.adoptAnimalInDB( animalID, userID );
                         }, function errorCallback(response) {
-                            console.log(status + " " + getURL);
+                            console.log( "Error on call: " + getURL );
                         });
-                    }, function errorCallback(response) {
-                        console.log(status + " " + getURL);
                     });
-                });
+                } else {
+                    console.log("User exists with ID: " + response.data.user );
+                    $scope.adoptAnimalInDB( animalID, response.data.user );
+                }
+            }, function errorCallback(response) {
+                console.log( "Error on call: " + getURL );
+            });
         }
     };
 
@@ -260,34 +278,34 @@ app.controller("myCtrl", function ($scope, $http) {
      * Schedule the donation
      **/
     $scope.attemptDonation = function () {
-        var status = true;
+        var valid = true;
 
-        if ($scope.formData.values.donation === null || $scope.formData.values.donation.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.amount === null || $scope.formData.values.amount.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.name === null || $scope.formData.values.name.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.number === null || $scope.formData.values.number.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.month === null || $scope.formData.values.month.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.year === null || $scope.formData.values.year.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.cvv === null || $scope.formData.values.cvv.trim() === '') {
-            status = false;
+        if ($scope.data.value.donation === null || $scope.data.value.donation.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.amount === null || $scope.data.value.amount.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.number === null || $scope.data.value.number.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.month === null || $scope.data.value.month.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.year === null || $scope.data.value.year.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.cvv === null || $scope.data.value.cvv.trim() === '') {
+            valid = false;
         }
 
-        if (status) {
+        if ( valid ) {
             $scope.donationData = {
                 form:       'donate',
-                donation:   $scope.formData.values.donation.trim(),
-                amount:     $scope.formData.values.amount.trim(),
-                name:       $scope.formData.values.name.trim(),
-                number:     $scope.formData.values.number.trim(),
-                month:      $scope.formData.values.month.trim(),
-                year:       $scope.formData.values.year.trim(),
-                cvv:        $scope.formData.values.cvv.trim()
+                donation:   $scope.data.value.donation.trim(),
+                amount:     $scope.data.value.amount.trim(),
+                name:       $scope.data.value.name.trim(),
+                number:     $scope.data.value.number.trim(),
+                month:      $scope.data.value.month.trim(),
+                year:       $scope.data.value.year.trim(),
+                cvv:        $scope.data.value.cvv.trim()
             };
 
             window.alert('Donation: ' + JSON.stringify($scope.donationData, null, 4));
@@ -300,46 +318,103 @@ app.controller("myCtrl", function ($scope, $http) {
      * Schedule the sponsor
      **/
     $scope.attemptSponsor = function () {
-        var status = true;
+        var valid = true;
 
-        if ($scope.formData.values.email1 === null || $scope.formData.values.email1.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.email2 === null || $scope.formData.values.email2.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.donation === null || $scope.formData.values.donation.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.amount === null || $scope.formData.values.amount.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.name === null || $scope.formData.values.name.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.number === null || $scope.formData.values.number.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.month === null || $scope.formData.values.month.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.year === null || $scope.formData.values.year.trim() === '') {
-            status = false;
-        } else if ($scope.formData.values.cvv === null || $scope.formData.values.cvv.trim() === '') {
-            status = false;
+        if ($scope.data.value.email1 === null || $scope.data.value.email1.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.email2 === null || $scope.data.value.email2.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.donation === null || $scope.data.value.donation.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.amount === null || $scope.data.value.amount.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.number === null || $scope.data.value.number.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.month === null || $scope.data.value.month.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.year === null || $scope.data.value.year.trim() === '') {
+            valid = false;
+        } else if ($scope.data.value.cvv === null || $scope.data.value.cvv.trim() === '') {
+            valid = false;
         }
 
-        if (status) {
+        if ( valid ) {
             $scope.sponsorData = {
                 form:       'sponsor',
-                email1:     $scope.formData.values.email1.trim(),
-                email2:     $scope.formData.values.email2.trim(),
-                donation:   $scope.formData.values.donation.trim(),
-                amount:     $scope.formData.values.amount.trim(),
-                name:       $scope.formData.values.name.trim(),
-                number:     $scope.formData.values.number.trim(),
-                month:      $scope.formData.values.month.trim(),
-                year:       $scope.formData.values.year.trim(),
-                cvv:        $scope.formData.values.cvv.trim()
+                email1:     $scope.data.value.email1.trim(),
+                email2:     $scope.data.value.email2.trim(),
+                donation:   $scope.data.value.donation.trim(),
+                amount:     $scope.data.value.amount.trim(),
+                name:       $scope.data.value.name.trim(),
+                number:     $scope.data.value.number.trim(),
+                month:      $scope.data.value.month.trim(),
+                year:       $scope.data.value.year.trim(),
+                cvv:        $scope.data.value.cvv.trim()
             };
 
             window.alert('Sponsor: ' + JSON.stringify($scope.sponsorData, null, 4));
         } else {
             window.alert('Sponsor validation failed...');
         }
+    };
+
+    $scope.adoptAnimalInDB = function( animalID, userID ) {
+        console.log( "adoptAnimalInDB( " + animalID + ", " + userID + " )" );
+
+        console.log("Getting date info...");
+        var today = new Date();
+        var todayMonth = today.getMonth() + 1, month = "";
+        var todayYear = today.getFullYear();
+        if (todayMonth === 1) {
+            month = "January";
+        } else if (todayMonth === 2) {
+            month = "February";
+        } else if (todayMonth === 3) {
+            month = "March";
+        } else if (todayMonth === 4) {
+            month = "April";
+        } else if (todayMonth === 5) {
+            month = "May";
+        } else if (todayMonth === 6) {
+            month = "June";
+        } else if (todayMonth === 7) {
+            month = "July";
+        } else if (todayMonth === 8) {
+            month = "August";
+        } else if (todayMonth === 9) {
+            month = "September";
+        } else if (todayMonth === 10) {
+            month = "October";
+        } else if (todayMonth === 11) {
+            month = "November";
+        } else if (todayMonth === 12) {
+            month = "December";
+        }
+
+        console.log("Updating animal...");
+        var getURL = "/php/adoptAnimal.php?id=" + animalID.trim();
+        angular.forEach($scope.animalsInNeed, function (iter) {
+            if (iter.id === animalID) {
+                getURL = getURL + "&status=ADOPTED";
+                getURL = getURL + "&rescuerID=" + userID.trim();
+                getURL = getURL + "&monthRescued=" + month.trim();
+                getURL = getURL + "&yearRescued=" + todayYear;
+            }
+        });
+        console.log("URL: " + getURL);
+        $http({
+            method: 'GET',
+            url: getURL,
+            dataType: 'text json'
+        }).then(function successCallback(response) {
+            console.log("Animal updated successfully!");
+            window.alert("Animal updated successfully!");
+            window.location.reload();
+        }, function errorCallback(response) {
+            console.log( "Error on call: " + getURL );
+        });
     };
 
     /**
@@ -401,69 +476,14 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.calculateBreedOptions = function () {
         var i, j, found = false;
         $scope.availableBreeds = [];
-        $scope.breedOptions = [
-            {value: 'Akita'},
-            {value: 'Akita Mix'},
-            {value: 'Beagle'},
-            {value: 'Beagle Mix'},
-            {value: 'Border Collie'},
-            {value: 'Border Collie Mix'},
-            {value: 'Boxer'},
-            {value: 'Boxer Mix'},
-            {value: 'Bulldog'},
-            {value: 'Bulldog Mix'},
-            {value: 'Chihuahua'},
-            {value: 'Chihuahua Mix'},
-            {value: 'Cane Corso'},
-            {value: 'Cane Corso Mix'},
-            {value: 'Corgi'},
-            {value: 'Corgi Mix'},
-            {value: 'Dachshund'},
-            {value: 'Dachshund Mix'},
-            {value: 'German Shepherd'},
-            {value: 'German Shepherd Mix'},
-            {value: 'Golden Retriever'},
-            {value: 'Golden Retriever Mix'},
-            {value: 'Great Dane'},
-            {value: 'Great Dane Mix'},
-            {value: 'Greyhound'},
-            {value: 'Greyhound Mix'},
-            {value: 'Hound'},
-            {value: 'Hound Mix'},
-            {value: 'Husky'},
-            {value: 'Husky Mix'},
-            {value: 'Labrador'},
-            {value: 'Labrador Mix'},
-            {value: 'Malamute'},
-            {value: 'Malamute Mix'},
-            {value: 'Mastiff'},
-            {value: 'Mastiff Mix'},
-            {value: 'Newfoundland'},
-            {value: 'Newfoundland Mix'},
-            {value: 'Pitbull'},
-            {value: 'Pitbull Mix'},
-            {value: 'Pointer'},
-            {value: 'Pointer Mix'},
-            {value: 'Poodle'},
-            {value: 'Poodle Mix'},
-            {value: 'Pug'},
-            {value: 'Pug Mix'},
-            {value: 'Retriever'},
-            {value: 'Retriever Mix'},
-            {value: 'Rottweiler'},
-            {value: 'Rottweiler Mix'},
-            {value: 'Shih Tzu'},
-            {value: 'Shih Tzu Mix'},
-            {value: 'Spaniel'},
-            {value: 'Spaniel Mix'}
-        ];
+        $scope.breedOptions = $scope.data.options.breed;
         for (i = 0; i < $scope.origAnimalsInNeed.length; i = i + 1) {
             $scope.availableBreeds.push($scope.origAnimalsInNeed[i].breed);
         }
         for (i = 0; i < $scope.breedOptions.length; i = i + 1) {
             found = false;
             for (j = 0; j < $scope.availableBreeds.length; j = j + 1) {
-                if ($scope.breedOptions[i].value === $scope.availableBreeds[j]) {
+                if ($scope.breedOptions[i].name === $scope.availableBreeds[j]) {
                     found = true;
                 }
             }
@@ -482,12 +502,12 @@ app.controller("myCtrl", function ($scope, $http) {
 
         if ($scope.origAnimalsInNeed.length > 0) {
             for (i = 0; i < $scope.origAnimalsInNeed.length; i = i + 1) {
-                if ($scope.filterData.values.species === $scope.origAnimalsInNeed[i].species || $scope.filterData.values.species === null || $scope.filterData.values.species === "") {
-                    if ($scope.filterData.values.breed === $scope.origAnimalsInNeed[i].breed || $scope.filterData.values.breed === null || $scope.filterData.values.breed === "") {
-                        if ($scope.filterData.values.sex === $scope.origAnimalsInNeed[i].sex || $scope.filterData.values.sex === null || $scope.filterData.values.sex === "") {
-                            if ($scope.filterData.values.years === $scope.origAnimalsInNeed[i].years || $scope.filterData.values.years === null || $scope.filterData.values.years === "") {
-                                if ($scope.filterData.values.aSize === $scope.origAnimalsInNeed[i].aSize || $scope.filterData.values.aSize === null || $scope.filterData.values.aSize === "") {
-                                    if ($scope.filterData.values.fixed === $scope.origAnimalsInNeed[i].fixed || $scope.filterData.values.fixed === null || $scope.filterData.values.fixed === "") {
+                if ($scope.filterData.value.species === $scope.origAnimalsInNeed[i].species || $scope.filterData.value.species === null || $scope.filterData.value.species === "") {
+                    if ($scope.filterData.value.breed === $scope.origAnimalsInNeed[i].breed || $scope.filterData.value.breed === null || $scope.filterData.value.breed === "") {
+                        if ($scope.filterData.value.sex === $scope.origAnimalsInNeed[i].sex || $scope.filterData.value.sex === null || $scope.filterData.value.sex === "") {
+                            if ($scope.filterData.value.years === $scope.origAnimalsInNeed[i].years || $scope.filterData.value.years === null || $scope.filterData.value.years === "") {
+                                if ($scope.filterData.value.aSize === $scope.origAnimalsInNeed[i].aSize || $scope.filterData.value.aSize === null || $scope.filterData.value.aSize === "") {
+                                    if ($scope.filterData.value.fixed === $scope.origAnimalsInNeed[i].fixed || $scope.filterData.value.fixed === null || $scope.filterData.value.fixed === "") {
                                         $scope.animalsInNeed.push($scope.origAnimalsInNeed[i]);
                                     }
                                 }
@@ -533,20 +553,20 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.sendEmail = function () {
         var status = true;
         
-        if ($scope.formData.values.subject === null || $scope.formData.values.subject.trim() === '') {
+        if ($scope.data.value.subject === null || $scope.data.value.subject.trim() === '') {
             status = false;
-        } else if ($scope.formData.values.body === null || $scope.formData.values.body.trim() === '') {
+        } else if ($scope.data.value.body === null || $scope.data.value.body.trim() === '') {
             status = false;
         }
         
         if (status) {
             $scope.emailData = {
                 form:       'email',
-                email1:     $scope.formData.values.email1.trim(),
-                email2:     $scope.formData.values.email2.trim(),
-                to:         $scope.formData.values.to.trim(),
-                subject:    $scope.formData.values.subject.trim(),
-                body:       $scope.formData.values.body.trim()
+                email1:     $scope.data.value.email1.trim(),
+                email2:     $scope.data.value.email2.trim(),
+                to:         $scope.data.value.to.trim(),
+                subject:    $scope.data.value.subject.trim(),
+                body:       $scope.data.value.body.trim()
             };
 
             window.alert('Email: ' + JSON.stringify($scope.emailData, null, 4));
