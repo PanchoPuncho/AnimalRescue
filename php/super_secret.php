@@ -96,90 +96,92 @@
                                 <a class="btn btn-primary dropdown-toggle input-group-addon" data-toggle="dropdown" href="#">
                                     <span class="caret"></span>
                                 </a>
-                                <input class="form-control" type="text" ng-model="formData.values.name" ng-change="calculateNames()" placeholder="Animal Name" required>
+                                <input class="form-control" type="text" ng-model="data.value.name" ng-change="calculateNames()" placeholder="Animal Name" required>
                                 <ul class="dropdown-menu">
-                                    <li ng-repeat="x in formData.options.name"><a ng-click="setAnimal(x.id)"> {{x.value}}</a></li>
+                                    <li ng-repeat="x in data.options.name"><a ng-click="setAnimal(x.id)"> {{x.name}}</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <select class="form-control" id="status" ng-model="formData.values.status" required>
+                            <select class="form-control" id="status" ng-model="data.value.status" required>
                                 <option value="" disabled selected>-- Status --</option>
-                                <option ng-repeat="x in formData.options.status">{{x.value}}</option>
+                                <option value="SHELTERED">Sheltered</option>
+                                <option value="FOSTERED">Fostered</option>
+                                <option value="ADOPTED" disabled>Adopted</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea class="form-control" rows="2" placeholder="Animal Write Up" ng-model="formData.values.writeUp" required></textarea>
+                            <textarea class="form-control" rows="2" placeholder="Animal Write Up" ng-model="data.value.writeUp" required></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <select class="form-control" id="species" ng-model="formData.values.species" required>
+                            <select class="form-control" id="species" ng-model="data.value.species" required>
                                 <option value="" disabled selected>-- Species --</option>
-                                <option ng-repeat="x in formData.options.species">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.species">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" id="breed" ng-model="formData.values.breed" required>
+                            <select class="form-control" id="breed" ng-model="data.value.breed" required>
                                 <option value="" disabled selected>-- Breed --</option>
-                                <option ng-repeat="x in formData.options.breed">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.breed">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" id="sex" ng-model="formData.values.sex" required>
+                            <select class="form-control" id="sex" ng-model="data.value.sex" required>
                                 <option value="" disabled selected>-- Sex --</option>
-                                <option ng-repeat="x in formData.options.sex">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.sex">{{x.name}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <select class="form-control" name="expiry-month" id="expiry-month" ng-model="formData.values.monthBorn" required>
+                            <select class="form-control" name="expiry-month" id="expiry-month" ng-model="data.value.monthBorn" required>
                                 <option value="" disabled selected>-- Month Born --</option>
-                                <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.month">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" name="expiry-year" ng-model="formData.values.yearBorn" required>
+                            <select class="form-control" name="expiry-year" ng-model="data.value.yearBorn" required>
                                 <option value="" disabled selected>-- Year Born --</option>
-                                <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.year">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" id="size" ng-model="formData.values.aSize" required>
+                            <select class="form-control" id="size" ng-model="data.value.aSize" required>
                                 <option value="" disabled selected>-- Size --</option>
-                                <option ng-repeat="x in formData.options.aSize">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.aSize">{{x.name}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <select class="form-control" name="expiry-month" id="expiry-month" ng-model="formData.values.monthFound" required>
+                            <select class="form-control" name="expiry-month" id="expiry-month" ng-model="data.value.monthFound" required>
                                 <option value="" disabled selected>-- Month Found --</option>
-                                <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.month">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" name="expiry-year" ng-model="formData.values.yearFound" required>
+                            <select class="form-control" name="expiry-year" ng-model="data.value.yearFound" required>
                                 <option value="" disabled selected>-- Year Found --</option>
-                                <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.year">{{x.name}}</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-control" id="fixed" ng-model="formData.values.fixed" required>
+                            <select class="form-control" id="fixed" ng-model="data.value.fixed" required>
                                 <option value="" disabled selected>-- Fixed --</option>
-                                <option ng-repeat="x in formData.options.fixed">{{x.value}}</option>
+                                <option ng-repeat="x in data.options.fixed">{{x.name}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-6">
-                            <input type="file" name="fileToUpload" id="fileToUpload" ng-model="formData.values.photo">
+                            <input type="file" name="fileToUpload" id="fileToUpload" ng-model="data.value.photo">
                         </div>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" ng-model="formData.values.id" placeholder="Animal ID" readonly>
+                            <input class="form-control" type="text" ng-model="data.value.id" placeholder="Animal ID" readonly>
                         </div>
                     </div>
                     <div class="form-group">

@@ -1,6 +1,5 @@
 app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
     
-    
     $scope.admin = false;
     $scope.modalShow = "show";
     $scope.modalMessage = null;
@@ -23,8 +22,8 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
 
                     $scope.animals = [];
                     
-                    $scope.formData = {
-                        values: {
+                    $scope.data = {
+                        value: {
                             id:         null,
                             name:       null,
                             writeUp:    null,
@@ -49,121 +48,121 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         },
                         options: {
                             breed: [
-                                {value: 'Akita'},
-                                {value: 'Akita Mix'},
-                                {value: 'Beagle'},
-                                {value: 'Beagle Mix'},
-                                {value: 'Border Collie'},
-                                {value: 'Border Collie Mix'},
-                                {value: 'Boxer'},
-                                {value: 'Boxer Mix'},
-                                {value: 'Bulldog'},
-                                {value: 'Bulldog Mix'},
-                                {value: 'Chihuahua'},
-                                {value: 'Chihuahua Mix'},
-                                {value: 'Cane Corso'},
-                                {value: 'Cane Corso Mix'},
-                                {value: 'Corgi'},
-                                {value: 'Corgi Mix'},
-                                {value: 'Dachshund'},
-                                {value: 'Dachshund Mix'},
-                                {value: 'German Shepherd'},
-                                {value: 'German Shepherd Mix'},
-                                {value: 'Golden Retriever'},
-                                {value: 'Golden Retriever Mix'},
-                                {value: 'Great Dane'},
-                                {value: 'Great Dane Mix'},
-                                {value: 'Greyhound'},
-                                {value: 'Greyhound Mix'},
-                                {value: 'Hound'},
-                                {value: 'Hound Mix'},
-                                {value: 'Husky'},
-                                {value: 'Husky Mix'},
-                                {value: 'Labrador'},
-                                {value: 'Labrador Mix'},
-                                {value: 'Malamute'},
-                                {value: 'Malamute Mix'},
-                                {value: 'Mastiff'},
-                                {value: 'Mastiff Mix'},
-                                {value: 'Newfoundland'},
-                                {value: 'Newfoundland Mix'},
-                                {value: 'Pitbull'},
-                                {value: 'Pitbull Mix'},
-                                {value: 'Pointer'},
-                                {value: 'Pointer Mix'},
-                                {value: 'Poodle'},
-                                {value: 'Poodle Mix'},
-                                {value: 'Pug'},
-                                {value: 'Pug Mix'},
-                                {value: 'Retriever'},
-                                {value: 'Retriever Mix'},
-                                {value: 'Rottweiler'},
-                                {value: 'Rottweiler Mix'},
-                                {value: 'Shih Tzu'},
-                                {value: 'Shih Tzu Mix'},
-                                {value: 'Spaniel'},
-                                {value: 'Spaniel Mix'}
+                                {name: 'Akita'},
+                                {name: 'Akita Mix'},
+                                {name: 'Beagle'},
+                                {name: 'Beagle Mix'},
+                                {name: 'Border Collie'},
+                                {name: 'Border Collie Mix'},
+                                {name: 'Boxer'},
+                                {name: 'Boxer Mix'},
+                                {name: 'Bulldog'},
+                                {name: 'Bulldog Mix'},
+                                {name: 'Chihuahua'},
+                                {name: 'Chihuahua Mix'},
+                                {name: 'Cane Corso'},
+                                {name: 'Cane Corso Mix'},
+                                {name: 'Corgi'},
+                                {name: 'Corgi Mix'},
+                                {name: 'Dachshund'},
+                                {name: 'Dachshund Mix'},
+                                {name: 'German Shepherd'},
+                                {name: 'German Shepherd Mix'},
+                                {name: 'Golden Retriever'},
+                                {name: 'Golden Retriever Mix'},
+                                {name: 'Great Dane'},
+                                {name: 'Great Dane Mix'},
+                                {name: 'Greyhound'},
+                                {name: 'Greyhound Mix'},
+                                {name: 'Hound'},
+                                {name: 'Hound Mix'},
+                                {name: 'Husky'},
+                                {name: 'Husky Mix'},
+                                {name: 'Labrador'},
+                                {name: 'Labrador Mix'},
+                                {name: 'Malamute'},
+                                {name: 'Malamute Mix'},
+                                {name: 'Mastiff'},
+                                {name: 'Mastiff Mix'},
+                                {name: 'Newfoundland'},
+                                {name: 'Newfoundland Mix'},
+                                {name: 'Pitbull'},
+                                {name: 'Pitbull Mix'},
+                                {name: 'Pointer'},
+                                {name: 'Pointer Mix'},
+                                {name: 'Poodle'},
+                                {name: 'Poodle Mix'},
+                                {name: 'Pug'},
+                                {name: 'Pug Mix'},
+                                {name: 'Retriever'},
+                                {name: 'Retriever Mix'},
+                                {name: 'Rottweiler'},
+                                {name: 'Rottweiler Mix'},
+                                {name: 'Shih Tzu'},
+                                {name: 'Shih Tzu Mix'},
+                                {name: 'Spaniel'},
+                                {name: 'Spaniel Mix'}
                             ],
                             fixed: [
-                                {value: 'No'},
-                                {value: 'Yes'}
+                                {name: 'No'},
+                                {name: 'Yes'}
                             ],
                             month: [
-                                {value: 'January'},
-                                {value: 'February'},
-                                {value: 'March'},
-                                {value: 'April'},
-                                {value: 'May'},
-                                {value: 'June'},
-                                {value: 'July'},
-                                {value: 'August'},
-                                {value: 'September'},
-                                {value: 'October'},
-                                {value: 'November'},
-                                {value: 'December'}
+                                {name: 'January'},
+                                {name: 'February'},
+                                {name: 'March'},
+                                {name: 'April'},
+                                {name: 'May'},
+                                {name: 'June'},
+                                {name: 'July'},
+                                {name: 'August'},
+                                {name: 'September'},
+                                {name: 'October'},
+                                {name: 'November'},
+                                {name: 'December'}
                             ],
                             name: [
                                 /* $scope.calculateNames() called below */
                             ],
                             sex: [
-                                {value: 'Female'},
-                                {value: 'Male'}
+                                {name: 'Female'},
+                                {name: 'Male'}
                             ],
                             aSize: [
-                                {value: 'Extra Small (less than 10 lbs)'},
-                                {value: 'Small (between 10 and 30 lbs)'},
-                                {value: 'Medium (between 30 and 60 lbs)'},
-                                {value: 'Large (between 60 and 100 lbs)'},
-                                {value: 'Extra Large (more than 100 lbs)'}
+                                {name: 'Extra Small (less than 10 lbs)'},
+                                {name: 'Small (between 10 and 30 lbs)'},
+                                {name: 'Medium (between 30 and 60 lbs)'},
+                                {name: 'Large (between 60 and 100 lbs)'},
+                                {name: 'Extra Large (more than 100 lbs)'}
                             ],
                             species: [
-                                {value: 'Canine'},
-                                {value: 'Feline'},
-                                {value: 'Other'}
+                                {name: 'Canine'},
+                                {name: 'Feline'},
+                                {name: 'Other'}
                             ],
                             status: [
-                                {value: 'Sheltered'},
-                                {value: 'Fostered'},
-                                {value: 'Adopted'}
+                                {name: 'SHELTERED'},
+                                {name: 'FOSTERED'},
+                                {name: 'ADOPTED'}
                             ],
                             year: [
-                                {value: '2000'},
-                                {value: '2001'},
-                                {value: '2002'},
-                                {value: '2003'},
-                                {value: '2004'},
-                                {value: '2005'},
-                                {value: '2006'},
-                                {value: '2007'},
-                                {value: '2008'},
-                                {value: '2009'},
-                                {value: '2010'},
-                                {value: '2011'},
-                                {value: '2012'},
-                                {value: '2013'},
-                                {value: '2014'},
-                                {value: '2015'},
-                                {value: '2016'}
+                                {name: '2000'},
+                                {name: '2001'},
+                                {name: '2002'},
+                                {name: '2003'},
+                                {name: '2004'},
+                                {name: '2005'},
+                                {name: '2006'},
+                                {name: '2007'},
+                                {name: '2008'},
+                                {name: '2009'},
+                                {name: '2010'},
+                                {name: '2011'},
+                                {name: '2012'},
+                                {name: '2013'},
+                                {name: '2014'},
+                                {name: '2015'},
+                                {name: '2016'}
                             ]
                         }
                     };
@@ -175,7 +174,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         $scope.animals = response.data.animals;
                         $scope.calculateNames();
                         $scope.calculateNewAnimalID();
-                        $scope.formData.values.id = $scope.formData.values.newAnimalID;
+                        $scope.data.value.id = $scope.data.value.newAnimalID;
                     });
                 };
 
@@ -188,25 +187,25 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     
                     $scope.clearForm();
                     
-                    $scope.formData.options.name = [];
+                    $scope.data.options.name = [];
                     
-                    if ($scope.formData.values.name !== null && $scope.formData.values.name !== "" && $scope.formData.values.name !== undefined) {
-                        var len = $scope.formData.values.name.length;
+                    if ($scope.data.value.name !== null && $scope.data.value.name !== "" && $scope.data.value.name !== undefined) {
+                        var len = $scope.data.value.name.length;
 
                         for (i = 0; i < $scope.animals.length; i = i + 1) {
-                            if (angular.lowercase($scope.formData.values.name) === angular.lowercase($scope.animals[i].name.substring(0, len))) {
-                                $scope.tempObject = {id: null, value: null};
+                            if (angular.lowercase($scope.data.value.name) === angular.lowercase($scope.animals[i].name.substring(0, len))) {
+                                $scope.tempObject = {id: null, name: null};
                                 $scope.tempObject.id = $scope.animals[i].id;
-                                $scope.tempObject.value = $scope.animals[i].name;
-                                $scope.formData.options.name.push($scope.tempObject);
+                                $scope.tempObject.name = $scope.animals[i].name;
+                                $scope.data.options.name.push($scope.tempObject);
                             }
                         }
                     } else {
                         for (i = 0; i < $scope.animals.length; i = i + 1) {
-                            $scope.tempObject = {id: null, value: null};
+                            $scope.tempObject = {id: null, name: null};
                             $scope.tempObject.id = $scope.animals[i].id;
-                            $scope.tempObject.value = $scope.animals[i].name;
-                            $scope.formData.options.name.push($scope.tempObject);
+                            $scope.tempObject.name = $scope.animals[i].name;
+                            $scope.data.options.name.push($scope.tempObject);
                         }
                     }
                 };
@@ -217,20 +216,20 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 $scope.calculateNewAnimalID = function () {
                     console.log("Calculating new animal id...");
 
-                    $scope.formData.values.newAnimalID = "";
+                    $scope.data.value.newAnimalID = "";
 
                     if ($scope.animals.length < 10) {
-                        $scope.formData.values.newAnimalID = '00000' + $scope.animals.length;
+                        $scope.data.value.newAnimalID = '00000' + $scope.animals.length;
                     } else if ($scope.animals.length < 100) {
-                        $scope.formData.values.newAnimalID = '0000' + $scope.animals.length;
+                        $scope.data.value.newAnimalID = '0000' + $scope.animals.length;
                     } else if ($scope.animals.length < 1000) {
-                        $scope.formData.values.newAnimalID = '000' + $scope.animals.length;
+                        $scope.data.value.newAnimalID = '000' + $scope.animals.length;
                     } else if ($scope.animals.length < 10000) {
-                        $scope.formData.values.newAnimalID = '00' + $scope.animals.length;
+                        $scope.data.value.newAnimalID = '00' + $scope.animals.length;
                     } else if ($scope.animals.length < 100000) {
-                        $scope.formData.values.newAnimalID = '0' + $scope.animals.length;
+                        $scope.data.value.newAnimalID = '0' + $scope.animals.length;
                     } else {
-                        $scope.formData.values.newAnimalID = $scope.animals.length;
+                        $scope.data.value.newAnimalID = $scope.animals.length;
                     }
                 };
                 
@@ -242,19 +241,19 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
 
                     document.getElementById("fileToUpload").value = "";
 
-                    $scope.formData.values.writeUp =    null;
-                    $scope.formData.values.species =    null;
-                    $scope.formData.values.breed =      null;
-                    $scope.formData.values.sex =        null;
-                    $scope.formData.values.monthBorn =  null;
-                    $scope.formData.values.yearBorn =   null;
-                    $scope.formData.values.aSize =      null;
-                    $scope.formData.values.monthFound = null;
-                    $scope.formData.values.yearFound =  null;
-                    $scope.formData.values.fixed =      null;
-                    $scope.formData.values.status =     null;
+                    $scope.data.value.writeUp =    null;
+                    $scope.data.value.species =    null;
+                    $scope.data.value.breed =      null;
+                    $scope.data.value.sex =        null;
+                    $scope.data.value.monthBorn =  null;
+                    $scope.data.value.yearBorn =   null;
+                    $scope.data.value.aSize =      null;
+                    $scope.data.value.monthFound = null;
+                    $scope.data.value.yearFound =  null;
+                    $scope.data.value.fixed =      null;
+                    $scope.data.value.status =     null;
                     
-                    $scope.formData.values.id = $scope.formData.values.newAnimalID;
+                    $scope.data.value.id = $scope.data.value.newAnimalID;
                 };
 
                 /**
@@ -265,19 +264,19 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     var i;
                     for (i = 0; i < $scope.animals.length; i = i + 1) {
                         if ($scope.animals[i].id === id) {
-                            $scope.formData.values.id = id;
-                            $scope.formData.values.name = $scope.animals[i].name;
-                            $scope.formData.values.writeUp = $scope.animals[i].writeUp;
-                            $scope.formData.values.species = $scope.animals[i].species;
-                            $scope.formData.values.breed = $scope.animals[i].breed;
-                            $scope.formData.values.sex = $scope.animals[i].sex;
-                            $scope.formData.values.monthBorn = $scope.animals[i].monthBorn;
-                            $scope.formData.values.yearBorn = $scope.animals[i].yearBorn;
-                            $scope.formData.values.aSize = $scope.animals[i].aSize;
-                            $scope.formData.values.monthFound = $scope.animals[i].monthFound;
-                            $scope.formData.values.yearFound = $scope.animals[i].yearFound;
-                            $scope.formData.values.fixed = $scope.animals[i].fixed;
-                            $scope.formData.values.status = $scope.animals[i].status;
+                            $scope.data.value.id = id;
+                            $scope.data.value.name = $scope.animals[i].name;
+                            $scope.data.value.writeUp = $scope.animals[i].writeUp;
+                            $scope.data.value.species = $scope.animals[i].species;
+                            $scope.data.value.breed = $scope.animals[i].breed;
+                            $scope.data.value.sex = $scope.animals[i].sex;
+                            $scope.data.value.monthBorn = $scope.animals[i].monthBorn;
+                            $scope.data.value.yearBorn = $scope.animals[i].yearBorn;
+                            $scope.data.value.aSize = $scope.animals[i].aSize;
+                            $scope.data.value.monthFound = $scope.animals[i].monthFound;
+                            $scope.data.value.yearFound = $scope.animals[i].yearFound;
+                            $scope.data.value.fixed = $scope.animals[i].fixed;
+                            $scope.data.value.status = $scope.animals[i].status;
                         }
                     }
                 };
@@ -289,40 +288,40 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     console.log("Updating...");
 
                     var fileButton = document.getElementById("fileToUpload");
-                    $scope.formData.values.photo = fileButton.value.replace(/^.*[\\\/]/, '');
+                    $scope.data.value.photo = fileButton.value.replace(/^.*[\\\/]/, '');
                                         
-                    if ($scope.formData.values.name === null || $scope.formData.values.name.trim() === '') {
+                    if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.writeUp === null || $scope.formData.values.writeUp === undefined || $scope.formData.values.writeUp.trim() === '') {
+                    } else if ($scope.data.value.writeUp === null || $scope.data.value.writeUp === undefined || $scope.data.value.writeUp.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.species === null || $scope.formData.values.species.trim() === '') {
+                    } else if ($scope.data.value.species === null || $scope.data.value.species.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.breed === null || $scope.formData.values.breed.trim() === '') {
+                    } else if ($scope.data.value.breed === null || $scope.data.value.breed.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.sex === null || $scope.formData.values.sex.trim() === '') {
+                    } else if ($scope.data.value.sex === null || $scope.data.value.sex.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.monthBorn === null || $scope.formData.values.monthBorn.trim() === '') {
+                    } else if ($scope.data.value.monthBorn === null || $scope.data.value.monthBorn.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.yearBorn === null || $scope.formData.values.yearBorn.trim() === '') {
+                    } else if ($scope.data.value.yearBorn === null || $scope.data.value.yearBorn.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.aSize === null || $scope.formData.values.aSize.trim() === '') {
+                    } else if ($scope.data.value.aSize === null || $scope.data.value.aSize.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.monthFound === null || $scope.formData.values.monthFound.trim() === '') {
+                    } else if ($scope.data.value.monthFound === null || $scope.data.value.monthFound.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.yearFound === null || $scope.formData.values.yearFound.trim() === '') {
+                    } else if ($scope.data.value.yearFound === null || $scope.data.value.yearFound.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.fixed === null || $scope.formData.values.fixed.trim() === '') {
+                    } else if ($scope.data.value.fixed === null || $scope.data.value.fixed.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.formData.values.status === null || $scope.formData.values.status.trim() === '') {
+                    } else if ($scope.data.value.status === null || $scope.data.value.status.trim() === '') {
                         console.log("Updating animal failed!");
                     } else {
-                        if ($scope.formData.values.id === $scope.formData.values.newAnimalID) {
+                        if ($scope.data.value.id === $scope.data.value.newAnimalID) {
                             $scope.addAnimal();
                         } else {
                             $scope.updateAnimal();
                         }
                         
-                        if ($scope.formData.values.photo !== null && $scope.formData.values.photo !== "" && $scope.formData.values.photo !== undefined) {
+                        if ($scope.data.value.photo !== null && $scope.data.value.photo !== "" && $scope.data.value.photo !== undefined) {
                             $scope.addPicture();
                         }
                     }
@@ -334,29 +333,29 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 $scope.updateAnimal = function () {
                     console.log("Updating existing animal: ");
 
-                    if ( $scope != null && $scope.formData != null && $scope.formData.values != null ) {
-                        console.log("Animal: " + JSON.stringify( $scope.formData.values, undefined, 2 ));
+                    if ( $scope != null && $scope.data != null && $scope.data.value != null ) {
+                        console.log("Animal: " + JSON.stringify( $scope.data.value, undefined, 2 ));
 
                         var getURL = "/php/updateAnimal.php";
-                        getURL = getURL + "?id=" + $scope.formData.values.id.trim();
-                        getURL = getURL + "&name=" + $scope.formData.values.name.trim();
-                        getURL = getURL + "&writeUp=" + $scope.formData.values.writeUp.trim();
-                        getURL = getURL + "&species=" + $scope.formData.values.species.trim();
-                        getURL = getURL + "&breed=" + $scope.formData.values.breed.trim();
-                        getURL = getURL + "&sex=" + $scope.formData.values.sex.trim();
-                        getURL = getURL + "&monthBorn=" + $scope.formData.values.monthBorn.trim();
-                        getURL = getURL + "&yearBorn=" + $scope.formData.values.yearBorn.trim();
-                        getURL = getURL + "&aSize=" + $scope.formData.values.aSize.trim();
-                        getURL = getURL + "&monthFound=" + $scope.formData.values.monthFound.trim();
-                        getURL = getURL + "&yearFound=" + $scope.formData.values.yearFound.trim();
-                        getURL = getURL + "&fixed=" + $scope.formData.values.fixed.trim();
-                        getURL = getURL + "&status=" + $scope.formData.values.status.trim();
-                        getURL = getURL + "&rescuerID=" + $scope.formData.values.rescuerID;
-                        getURL = getURL + "&monthRescued=" + $scope.formData.values.monthRescued;
-                        getURL = getURL + "&yearRescued=" + $scope.formData.values.yearRescued;
-                        getURL = getURL + "&age=" + $scope.formData.values.age;
-                        getURL = getURL + "&years=" + $scope.formData.values.years;
-                        getURL = getURL + "&photos=" + $scope.formData.values.photos;
+                        getURL = getURL + "?id=" + $scope.data.value.id.trim();
+                        getURL = getURL + "&name=" + $scope.data.value.name.trim();
+                        getURL = getURL + "&writeUp=" + $scope.data.value.writeUp.trim();
+                        getURL = getURL + "&species=" + $scope.data.value.species.trim();
+                        getURL = getURL + "&breed=" + $scope.data.value.breed.trim();
+                        getURL = getURL + "&sex=" + $scope.data.value.sex.trim();
+                        getURL = getURL + "&monthBorn=" + $scope.data.value.monthBorn.trim();
+                        getURL = getURL + "&yearBorn=" + $scope.data.value.yearBorn.trim();
+                        getURL = getURL + "&aSize=" + $scope.data.value.aSize.trim();
+                        getURL = getURL + "&monthFound=" + $scope.data.value.monthFound.trim();
+                        getURL = getURL + "&yearFound=" + $scope.data.value.yearFound.trim();
+                        getURL = getURL + "&fixed=" + $scope.data.value.fixed.trim();
+                        getURL = getURL + "&status=" + $scope.data.value.status.trim();
+                        getURL = getURL + "&rescuerID=" + $scope.data.value.rescuerID;
+                        getURL = getURL + "&monthRescued=" + $scope.data.value.monthRescued;
+                        getURL = getURL + "&yearRescued=" + $scope.data.value.yearRescued;
+                        getURL = getURL + "&age=" + $scope.data.value.age;
+                        getURL = getURL + "&years=" + $scope.data.value.years;
+                        getURL = getURL + "&photos=" + $scope.data.value.photos;
                         $http.get(getURL).then(function (response) {
                             console.log("Animal updated successfully!");
                             $scope.resetPage();
@@ -393,8 +392,8 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
 
                             getURL = "/php/addPicture.php";
                             getURL = getURL + "?id=" + photoID.trim();
-                            getURL = getURL + "&animalID=" + $scope.formData.values.id.trim();
-                            getURL = getURL + "&photo=uploads/" + $scope.formData.values.photo.trim();
+                            getURL = getURL + "&animalID=" + $scope.data.value.id.trim();
+                            getURL = getURL + "&photo=uploads/" + $scope.data.value.photo.trim();
                             $http.get(getURL).then(function (response) {
                                 console.log("Picture added successfully!");
                                 $timeout( function() {
@@ -411,25 +410,25 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     console.log("Adding new animal...");
 
                     var getURL = "/php/addAnimal.php";
-                    getURL = getURL + "?id=" + $scope.formData.values.id.trim();
-                    getURL = getURL + "&name=" + $scope.formData.values.name.trim();
-                    getURL = getURL + "&writeUp=" + $scope.formData.values.writeUp.trim();
-                    getURL = getURL + "&species=" + $scope.formData.values.species.trim();
-                    getURL = getURL + "&breed=" + $scope.formData.values.breed.trim();
-                    getURL = getURL + "&sex=" + $scope.formData.values.sex.trim();
-                    getURL = getURL + "&monthBorn=" + $scope.formData.values.monthBorn.trim();
-                    getURL = getURL + "&yearBorn=" + $scope.formData.values.yearBorn.trim();
-                    getURL = getURL + "&aSize=" + $scope.formData.values.aSize.trim();
-                    getURL = getURL + "&monthFound=" + $scope.formData.values.monthFound.trim();
-                    getURL = getURL + "&yearFound=" + $scope.formData.values.yearFound.trim();
-                    getURL = getURL + "&fixed=" + $scope.formData.values.fixed.trim();
-                    getURL = getURL + "&status=" + $scope.formData.values.status.trim();
-                    getURL = getURL + "&rescuerID=" + $scope.formData.values.rescuerID;
-                    getURL = getURL + "&monthRescued=" + $scope.formData.values.monthRescued;
-                    getURL = getURL + "&yearRescued=" + $scope.formData.values.yearRescued;
-                    getURL = getURL + "&age=" + $scope.formData.values.age;
-                    getURL = getURL + "&years=" + $scope.formData.values.years;
-                    getURL = getURL + "&photos=" + $scope.formData.values.photos;
+                    getURL = getURL + "?id=" + $scope.data.value.id.trim();
+                    getURL = getURL + "&name=" + $scope.data.value.name.trim();
+                    getURL = getURL + "&writeUp=" + $scope.data.value.writeUp.trim();
+                    getURL = getURL + "&species=" + $scope.data.value.species.trim();
+                    getURL = getURL + "&breed=" + $scope.data.value.breed.trim();
+                    getURL = getURL + "&sex=" + $scope.data.value.sex.trim();
+                    getURL = getURL + "&monthBorn=" + $scope.data.value.monthBorn.trim();
+                    getURL = getURL + "&yearBorn=" + $scope.data.value.yearBorn.trim();
+                    getURL = getURL + "&aSize=" + $scope.data.value.aSize.trim();
+                    getURL = getURL + "&monthFound=" + $scope.data.value.monthFound.trim();
+                    getURL = getURL + "&yearFound=" + $scope.data.value.yearFound.trim();
+                    getURL = getURL + "&fixed=" + $scope.data.value.fixed.trim();
+                    getURL = getURL + "&status=" + $scope.data.value.status.trim();
+                    getURL = getURL + "&rescuerID=" + $scope.data.value.rescuerID;
+                    getURL = getURL + "&monthRescued=" + $scope.data.value.monthRescued;
+                    getURL = getURL + "&yearRescued=" + $scope.data.value.yearRescued;
+                    getURL = getURL + "&age=" + $scope.data.value.age;
+                    getURL = getURL + "&years=" + $scope.data.value.years;
+                    getURL = getURL + "&photos=" + $scope.data.value.photos;
                     $http.get(getURL).then(function (response) {
                         console.log("Animal added successfully!");
                         $scope.resetPage();

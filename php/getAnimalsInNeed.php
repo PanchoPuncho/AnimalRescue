@@ -7,7 +7,7 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql = "SELECT * FROM Animal WHERE status!='Adopted' ORDER BY name";
+    $sql = "SELECT * FROM Animal WHERE status!='ADOPTED' ORDER BY name";
     $result = mysqli_query( $con, $sql );
     
     $numResults = mysqli_num_rows( $result );

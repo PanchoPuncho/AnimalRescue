@@ -9,7 +9,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="data/data.json"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap-formhelpers-states.en_US.js"></script>
@@ -147,29 +146,29 @@
     <div id="searchBar" class="container-fluid">
 		<form class="form-inline" role="form">
 			<div class="form-group">
-				<select class="form-control" id="species" ng-model="filterData.values.species" ng-change="filter()">
+				<select class="form-control" id="species" ng-model="filterData.value.species" ng-change="filter()">
 					<option value="" selected>-- Species --</option>
-					<option ng-repeat="x in filterData.options.species">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.species">{{x.name}}</option>
 				</select>
-				<select class="form-control" id="breed" ng-model="filterData.values.breed" ng-change="filter()">
+				<select class="form-control" id="breed" ng-model="filterData.value.breed" ng-change="filter()">
 					<option value="" selected>-- Breed --</option>
-					<option ng-repeat="x in filterData.options.breed">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.breed">{{x.name}}</option>
 				</select>
-				<select class="form-control" id="sex" ng-model="filterData.values.sex" ng-change="filter()">
+				<select class="form-control" id="sex" ng-model="filterData.value.sex" ng-change="filter()">
 					<option value="" selected>-- Sex --</option>
-					<option ng-repeat="x in filterData.options.sex">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.sex">{{x.name}}</option>
 				</select>
-				<select class="form-control" id="age" ng-model="filterData.values.years" ng-change="filter()">
+				<select class="form-control" id="age" ng-model="filterData.value.years" ng-change="filter()">
 					<option value="" selected>-- Age --</option>
-					<option ng-repeat="x in filterData.options.years" value="{{ x.id }}">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.years" value="{{ x.id }}">{{x.name}}</option>
 				</select>
-				<select class="form-control" id="size" ng-model="filterData.values.aSize" ng-change="filter()">
+				<select class="form-control" id="size" ng-model="filterData.value.aSize" ng-change="filter()">
 					<option value="" selected>-- Size --</option>
-					<option ng-repeat="x in filterData.options.aSize">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.aSize">{{x.name}}</option>
 				</select>
-                <select class="form-control" id="fixed" ng-model="filterData.values.fixed" ng-change="filter()">
+                <select class="form-control" id="fixed" ng-model="filterData.value.fixed" ng-change="filter()">
 					<option value="" selected>-- Fixed --</option>
-					<option ng-repeat="x in filterData.options.fixed">{{x.value}}</option>
+					<option ng-repeat="x in filterData.options.fixed">{{x.name}}</option>
 				</select>
 			</div>
 		</form>
@@ -249,41 +248,41 @@
 										<fieldset>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="formData.values.name" required>
+													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="data.value.name" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="formData.values.phone" required>
+													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="data.value.phone" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="data.value.email1" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="data.value.email2" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="formData.values.addr1" required>
+													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="data.value.addr1" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="formData.values.addr2">
+													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="data.value.addr2">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
-													<input id="city" type="input" class="form-control" placeholder="City" ng-model="formData.values.city" required>
+													<input id="city" type="input" class="form-control" placeholder="City" ng-model="data.value.city" required>
 												</div>
 												<div class="col-sm-4">
-													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="formData.values.state" required></select>
+													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="data.value.state" required></select>
 												</div>
 												<div class="col-sm-4">
-													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="formData.values.zip" required>
+													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="data.value.zip" required>
 												</div>
 											</div>
 											<div class="form-group text-center">
-												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'Adopted' )">Submit Adoption Inquiry</button>
+												<button class="btn btn-primary" ng-click="attemptAdoption( x.id )">Submit Adoption Inquiry</button>
 											</div>
 										</fieldset>
 									</form>
@@ -307,37 +306,37 @@
 										<fieldset>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="formData.values.name" required>
+													<input id="firstName" type="input" class="form-control" placeholder="Full Name" ng-model="data.value.name" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="formData.values.phone" required>
+													<input id="phone" type="tel" class="form-control" placeholder="(123) 456-7890" ng-model="data.value.phone" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="data.value.email1" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="data.value.email2" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="formData.values.addr1" required>
+													<input id="streetAddress" type="input" class="form-control" placeholder="Address Line 1" ng-model="data.value.addr1" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="formData.values.addr2">
+													<input id="streetAddressContinued" type="input" class="form-control" placeholder="Line 2" ng-model="data.value.addr2">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-4">
-													<input id="city" type="input" class="form-control" placeholder="City" ng-model="formData.values.city" required>
+													<input id="city" type="input" class="form-control" placeholder="City" ng-model="data.value.city" required>
 												</div>
 												<div class="col-sm-4">
-													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="formData.values.state" required></select>
+													<select id="state" class="form-control input-medium bfh-states" data-country="US" ng-model="data.value.state" required></select>
 												</div>
 												<div class="col-sm-4">
-													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="formData.values.zip" required>
+													<input id="zip" type="input" class="form-control" placeholder="Zip" ng-model="data.value.zip" required>
 												</div>
 											</div>
 											<div class="form-group text-center">
@@ -371,47 +370,47 @@
                                         <fieldset>
                                             <div class="form-group">
 												<div class="col-sm-6">
-													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+													<input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="data.value.email1" required>
 												</div>
 												<div class="col-sm-6">
-													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+													<input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="data.value.email2" required>
 												</div>
 											</div>
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <select class="form-control" id="oneTimeDonation" ng-model="formData.values.donation" required>
+                                                    <select class="form-control" id="oneTimeDonation" ng-model="data.value.donation" required>
                                                         <option value="" disabled selected>Select Donation Type</option>
-                                                        <option ng-repeat="x in formData.options.donation">{{x.value}}</option>
+                                                        <option ng-repeat="x in data.options.donation">{{x.name}}</option>
                                                     </select>
                                                 </div>
                                                 <div id="sponsorInput" class="input-group col-sm-6">
                                                     <span class="input-group-addon">$</span>
-                                                    <input class="form-control" type="number" min="1.00" step="0.01" ng-model="formData.values.amount" required>
+                                                    <input class="form-control" type="number" min="1.00" step="0.01" ng-model="data.value.amount" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="formData.values.name" required>
+                                                    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="data.value.name" required>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="formData.values.number" required>
+                                                    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="data.value.number" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-4">
-                                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="formData.values.month" required>
+                                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="data.value.month" required>
                                                         <option value="" disabled selected>Month</option>
-                                                        <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                                        <option ng-repeat="x in data.options.month">{{x.name}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <select class="form-control" name="expiry-year" ng-model="formData.values.year" required>
+                                                    <select class="form-control" name="expiry-year" ng-model="data.value.year" required>
                                                         <option value="" disabled selected>Year</option>
-                                                        <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                                        <option ng-repeat="x in data.options.year">{{x.name}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="formData.values.cvv" required>
+                                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="data.value.cvv" required>
                                                 </div>
                                             </div>
                                             <div class="form-group text-center">
@@ -543,23 +542,23 @@
 						<feildset>
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="formData.values.email1" required>
+                                    <input id="adopterEmail" type="email" class="form-control" placeholder="Email Address" ng-model="data.value.email1" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="formData.values.email2" required>
+                                    <input id="adopterEmailVerification" type="email" class="form-control" placeholder="Verify Email Address" ng-model="data.value.email2" required>
                                 </div>
                             </div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<select class="form-control col-sm-9 " id="subject" ng-model="formData.values.subject" required>
+									<select class="form-control col-sm-9 " id="subject" ng-model="data.value.subject" required>
 										<option value="" disabled selected>Select Subject</option>
-										<option ng-repeat="x in formData.options.subject">{{ x.value }}</option>
+										<option ng-repeat="x in data.options.subject">{{ x.name }}</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<textarea class="form-control" rows="5" placeholder="Email Body" ng-model="formData.values.body" required></textarea>
+									<textarea class="form-control" rows="5" placeholder="Email Body" ng-model="data.value.body" required></textarea>
 								</div>
 							</div>
 							<div class="form-group">
@@ -576,39 +575,39 @@
 						<fieldset>
 							<div class="form-group">
 								<div class="col-sm-6">
-									<select class="form-control" id="oneTimeDonation" ng-model="formData.values.donation" required>
+									<select class="form-control" id="oneTimeDonation" ng-model="data.value.donation" required>
 										<option value="" disabled selected>Select Donation Type</option>
-										<option ng-repeat="x in formData.options.donation">{{ x.value }}</option>
+										<option ng-repeat="x in data.options.donation">{{ x.name }}</option>
 									</select>
 								</div>
                                 <div id="sponsorInput" class="input-group col-sm-6">
 									<span class="input-group-addon">$</span>
-									<input class="form-control" type="number" min="1.00" step="0.01" ng-model="formData.values.amount" required>
+									<input class="form-control" type="number" min="1.00" step="0.01" ng-model="data.value.amount" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-6">
-									<input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="formData.values.name" required>
+									<input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name" ng-model="data.value.name" required>
 								</div>
                                 <div class="col-sm-6">
-									<input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="formData.values.number" required>
+									<input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number"  ng-model="data.value.number" required>
 								</div>
 							</div>
 							<div class="form-group">
                                 <div class="col-sm-4">
-                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="formData.values.month" required>
+                                    <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" ng-model="data.value.month" required>
                                         <option value="" disabled selected>Month</option>
-                                        <option ng-repeat="x in formData.options.month">{{x.value}}</option>
+                                        <option ng-repeat="x in data.options.month">{{x.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <select class="form-control" name="expiry-year" ng-model="formData.values.year" required>
+                                    <select class="form-control" name="expiry-year" ng-model="data.value.year" required>
                                         <option value="" disabled selected>Year</option>
-                                        <option ng-repeat="x in formData.options.year">{{x.value}}</option>
+                                        <option ng-repeat="x in data.options.year">{{x.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="formData.values.cvv" required>
+                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" ng-model="data.value.cvv" required>
                                 </div>
                             </div>
 							<div class="form-group text-center">
@@ -638,8 +637,8 @@
 	<form class="form-inline">
 		<div class="form-group">
 			<label for="notificationsEmail">Get New Arrival Notifications:</label>
-			<input type="email" class="form-control" id="notificationsEmail" placeholder="Email Address" size="34" ng-model="formData.values.email1" required>
-            <input type="email" class="form-control" id="notificationsEmailVer" placeholder="Verify Email Address" size="34" ng-model="formData.values.email2" required>
+			<input type="email" class="form-control" id="notificationsEmail" placeholder="Email Address" size="34" ng-model="data.value.email1" required>
+            <input type="email" class="form-control" id="notificationsEmailVer" placeholder="Verify Email Address" size="34" ng-model="data.value.email2" required>
 		</div>
 		<div class="form-group">
 			<button type="success" class="btn btn-primary">Sign Up</button>
