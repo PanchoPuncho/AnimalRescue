@@ -32,7 +32,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                             sex:        null,
                             monthBorn:  null,
                             yearBorn:   null,
-                            aSize:      null,
+                            size:      null,
                             monthFound: null,
                             yearFound:  null,
                             fixed:      null,
@@ -128,7 +128,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                                 {name: 'Female'},
                                 {name: 'Male'}
                             ],
-                            aSize: [
+                            size: [
                                 {name: 'Extra Small (less than 10 lbs)'},
                                 {name: 'Small (between 10 and 30 lbs)'},
                                 {name: 'Medium (between 30 and 60 lbs)'},
@@ -247,7 +247,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     $scope.data.value.sex =        null;
                     $scope.data.value.monthBorn =  null;
                     $scope.data.value.yearBorn =   null;
-                    $scope.data.value.aSize =      null;
+                    $scope.data.value.size =      null;
                     $scope.data.value.monthFound = null;
                     $scope.data.value.yearFound =  null;
                     $scope.data.value.fixed =      null;
@@ -272,7 +272,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                             $scope.data.value.sex = $scope.animals[i].sex;
                             $scope.data.value.monthBorn = $scope.animals[i].monthBorn;
                             $scope.data.value.yearBorn = $scope.animals[i].yearBorn;
-                            $scope.data.value.aSize = $scope.animals[i].aSize;
+                            $scope.data.value.size = $scope.animals[i].size;
                             $scope.data.value.monthFound = $scope.animals[i].monthFound;
                             $scope.data.value.yearFound = $scope.animals[i].yearFound;
                             $scope.data.value.fixed = $scope.animals[i].fixed;
@@ -304,7 +304,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         console.log("Updating animal failed!");
                     } else if ($scope.data.value.yearBorn === null || $scope.data.value.yearBorn.trim() === '') {
                         console.log("Updating animal failed!");
-                    } else if ($scope.data.value.aSize === null || $scope.data.value.aSize.trim() === '') {
+                    } else if ($scope.data.value.size === null || $scope.data.value.size.trim() === '') {
                         console.log("Updating animal failed!");
                     } else if ($scope.data.value.monthFound === null || $scope.data.value.monthFound.trim() === '') {
                         console.log("Updating animal failed!");
@@ -345,7 +345,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         getURL = getURL + "&sex=" + $scope.data.value.sex.trim();
                         getURL = getURL + "&monthBorn=" + $scope.data.value.monthBorn.trim();
                         getURL = getURL + "&yearBorn=" + $scope.data.value.yearBorn.trim();
-                        getURL = getURL + "&aSize=" + $scope.data.value.aSize.trim();
+                        getURL = getURL + "&size=" + $scope.data.value.size.trim();
                         getURL = getURL + "&monthFound=" + $scope.data.value.monthFound.trim();
                         getURL = getURL + "&yearFound=" + $scope.data.value.yearFound.trim();
                         getURL = getURL + "&fixed=" + $scope.data.value.fixed.trim();
@@ -419,7 +419,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     getURL = getURL + "&sex=" + $scope.data.value.sex.trim();
                     getURL = getURL + "&monthBorn=" + $scope.data.value.monthBorn.trim();
                     getURL = getURL + "&yearBorn=" + $scope.data.value.yearBorn.trim();
-                    getURL = getURL + "&aSize=" + $scope.data.value.aSize.trim();
+                    getURL = getURL + "&size=" + $scope.data.value.size.trim();
                     getURL = getURL + "&monthFound=" + $scope.data.value.monthFound.trim();
                     getURL = getURL + "&yearFound=" + $scope.data.value.yearFound.trim();
                     getURL = getURL + "&fixed=" + $scope.data.value.fixed.trim();

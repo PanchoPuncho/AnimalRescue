@@ -47,10 +47,10 @@
 	} else {
 	    $yearBorn = "\"".$_GET['yearBorn']."\"";
 	}
-	if ( $_GET['aSize'] == "null" || $_GET['aSize'] == "" ) {
-	    exit( "Invalid value for aSize" );
+	if ( $_GET['size'] == "null" || $_GET['size'] == "" ) {
+	    exit( "Invalid value for size" );
 	} else {
-	    $aSize = "\"".$_GET['aSize']."\"";
+	    $size = "\"".$_GET['size']."\"";
 	}
 	if ( $_GET['monthFound'] == "null" || $_GET['monthFound'] == "" ) {
 	    exit ( "Invalid value for monthFound" );
@@ -103,7 +103,7 @@
 	    $photos = "\"".$_GET['photos']."\"";
 	}
 
-	$sql = "INSERT INTO Animal VALUES (".$id.", ".$name.", ".$writeUp.", ".$species.", ".$breed.", ".$sex.", ".$monthBorn.", ".$yearBorn.", ".$aSize.", ".$monthFound.", ".$yearFound.", ".$fixed.", ".$status.", ".$rescuerID.", ".$monthRescued.", ".$yearRescued.", ".$age.", ".$years.", ".$photos.", (select now()))";
+	$sql = "INSERT INTO Animal VALUES (".$id.", ".$name.", ".$writeUp.", ".$species.", ".$breed.", ".$sex.", ".$monthBorn.", ".$yearBorn.", ".$size.", ".$monthFound.", ".$yearFound.", ".$fixed.", ".$status.", ".$rescuerID.", ".$monthRescued.", ".$yearRescued.", ".$age.", ".$years.", ".$photos.", (select now()))";
 
 	if ( mysqli_query( $con, $sql ) === TRUE ) {
 	    echo "{ \"message\":\"New record created successfully\" }";

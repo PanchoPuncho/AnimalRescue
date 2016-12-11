@@ -11,7 +11,7 @@ app.controller("myCtrl", function ($scope, $http) {
             breed:      null,
             fixed:      null,
             sex:        null,
-            aSize:      null,
+            size:      null,
             species:    null,
             years:      null
         },
@@ -27,7 +27,7 @@ app.controller("myCtrl", function ($scope, $http) {
                 {name: 'Female'},
                 {name: 'Male'}
             ],
-            aSize: [
+            size: [
                 {name: 'Extra Small (less than 10 lbs)'},
                 {name: 'Small (between 10 and 30 lbs)'},
                 {name: 'Medium (between 30 and 60 lbs)'},
@@ -413,7 +413,21 @@ app.controller("myCtrl", function ($scope, $http) {
             var index = $scope.getAnimal( animalID );
             var animal = $scope.origAnimalsInNeed[index];
 
-            getURL = "/php/email.php?id=" + animalID + "&status=" + status;
+            getURL = "/php/email.php?id=" + animalID.trim();
+            getURL = getURL + "&status=" + status.trim();
+            getURL = getURL + "&writeUp=" + animal.writeUp.trim();
+            getURL = getURL + "&species=" + animal.species.trim();
+            getURL = getURL + "&breed=" + animal.breed.trim();
+            getURL = getURL + "&sex=" + animal.sex.trim();
+            getURL = getURL + "&monthBorn=" + animal.monthBorn.trim();
+            getURL = getURL + "&yearBorn=" + animal.yearBorn.trim();
+            getURL = getURL + "&size=" + animal.size.trim();
+            getURL = getURL + "&monthFound=" + animal.monthFound.trim();
+            getURL = getURL + "&yearFound=" + animal.yearFound.trim();
+            getURL = getURL + "&fixed=" + animal.fixed.trim();
+            getURL = getURL + "&rescuerID=" + userID.trim();
+            getURL = getURL + "&monthRescued=" + month.trim();
+            getURL = getURL + "&yearRescued=" + todayYear;
             $http({
                 method: 'POST',
                 url: getURL,
@@ -518,7 +532,7 @@ app.controller("myCtrl", function ($scope, $http) {
                     if ($scope.filterData.value.breed === $scope.origAnimalsInNeed[i].breed || $scope.filterData.value.breed === null || $scope.filterData.value.breed === "") {
                         if ($scope.filterData.value.sex === $scope.origAnimalsInNeed[i].sex || $scope.filterData.value.sex === null || $scope.filterData.value.sex === "") {
                             if ($scope.filterData.value.years === $scope.origAnimalsInNeed[i].years || $scope.filterData.value.years === null || $scope.filterData.value.years === "") {
-                                if ($scope.filterData.value.aSize === $scope.origAnimalsInNeed[i].aSize || $scope.filterData.value.aSize === null || $scope.filterData.value.aSize === "") {
+                                if ($scope.filterData.value.size === $scope.origAnimalsInNeed[i].size || $scope.filterData.value.size === null || $scope.filterData.value.size === "") {
                                     if ($scope.filterData.value.fixed === $scope.origAnimalsInNeed[i].fixed || $scope.filterData.value.fixed === null || $scope.filterData.value.fixed === "") {
                                         $scope.animalsInNeed.push($scope.origAnimalsInNeed[i]);
                                     }

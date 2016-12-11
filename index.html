@@ -162,9 +162,9 @@
 					<option value="" selected>-- Age --</option>
 					<option ng-repeat="x in filterData.options.years" value="{{ x.id }}">{{x.name}}</option>
 				</select>
-				<select class="form-control" id="size" ng-model="filterData.value.aSize" ng-change="filter()">
+				<select class="form-control" id="size" ng-model="filterData.value.size" ng-change="filter()">
 					<option value="" selected>-- Size --</option>
-					<option ng-repeat="x in filterData.options.aSize">{{x.name}}</option>
+					<option ng-repeat="x in filterData.options.size">{{x.name}}</option>
 				</select>
                 <select class="form-control" id="fixed" ng-model="filterData.value.fixed" ng-change="filter()">
 					<option value="" selected>-- Fixed --</option>
@@ -199,7 +199,7 @@
                             </div>
                             <div>
                                 <div class="col-sm-6">
-                                    <pre><strong>Size:</strong> {{ x.aSize }}</pre>
+                                    <pre><strong>Size:</strong> {{ x.size }}</pre>
                                 </div>
                                 <div class="col-sm-6">
                                     <pre><strong>Age:</strong> {{ x.age }}</pre>

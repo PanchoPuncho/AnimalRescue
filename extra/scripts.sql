@@ -51,7 +51,7 @@ CREATE TABLE Animal (
     sex         varchar(6)  NOT NULL,   -- Male, Female
     monthBorn   varchar(9)  NOT NULL,   -- January, etc
     yearBorn    char(4)     NOT NULL,   -- 2000, etc
-    aSize       varchar(32) NOT NULL,   -- Extra Small (...), etc
+    size        varchar(32) NOT NULL,   -- Extra Small (...), etc
     monthFound  varchar(9)  NOT NULL,   -- January, etc
     yearFound   char(4)     NOT NULL,   -- 2000, etc
     fixed       varchar(3)  NOT NULL,   -- Yes, No
@@ -114,7 +114,7 @@ INSERT INTO Picture VALUES ('000014', '000007', 'uploads/buddy3.jpeg', (SELECT n
 
 -- Update data
 update Animal set status='ADOPTED', rescuerID='000000', monthRescued='July', yearRescued='2016' where id='000002';
-update Animal set name='', writeUp='', species='', breed='', sex='', monthBorn='', yearBorn='', aSize='', monthFound='', yearFound='', fixed='', status='', rescuerID='', monthRescued='', yearRescued='', age='', years='', photos='' where id='000000';
+update Animal set name='', writeUp='', species='', breed='', sex='', monthBorn='', yearBorn='', size='', monthFound='', yearFound='', fixed='', status='', rescuerID='', monthRescued='', yearRescued='', age='', years='', photos='' where id='000000';
 -- Update data
 
 -- SELECT data examples

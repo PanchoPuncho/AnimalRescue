@@ -55,11 +55,11 @@
 	    echo "".$yearBorn."";
 	    $yearBorn = "\"".$_GET['yearBorn']."\"";
 	}
-	if ( $_GET['aSize'] == "null" ) {
-	    $aSize = "null";
+	if ( $_GET['size'] == "null" ) {
+	    $size = "null";
 	} else {
-	    echo "".$aSize."";
-	    $aSize = "\"".$_GET['aSize']."\"";
+	    echo "".$size."";
+	    $size = "\"".$_GET['size']."\"";
 	}
 	if ( $_GET['monthFound'] == "null" ) {
 	    $monthFound = "null";
@@ -122,7 +122,7 @@
 	    $photos = "\"".$_GET['photos']."\"";
 	}
 
-    $sql = "UPDATE Animal SET name=".$name.", writeUp=".$writeUp.", species=".$species.", breed=".$breed.", sex=".$sex.", monthBorn=".$monthBorn.", yearBorn=".$yearBorn.", aSize=".$aSize.", monthFound=".$monthFound.", yearFound=".$yearFound.", fixed=".$fixed.", status=".$status.", rescuerID=".$rescuerID.", monthRescued=".$monthRescued.", yearRescued=".$yearRescued.", age=".$age.", years=".$years.", photos=".$photos." WHERE id=".$id;
+    $sql = "UPDATE Animal SET name=".$name.", writeUp=".$writeUp.", species=".$species.", breed=".$breed.", sex=".$sex.", monthBorn=".$monthBorn.", yearBorn=".$yearBorn.", size=".$size.", monthFound=".$monthFound.", yearFound=".$yearFound.", fixed=".$fixed.", status=".$status.", rescuerID=".$rescuerID.", monthRescued=".$monthRescued.", yearRescued=".$yearRescued.", age=".$age.", years=".$years.", photos=".$photos." WHERE id=".$id;
 
 	if ( mysqli_query( $con, $sql ) === true ) {
 	    echo "{ \"message\":\"Record updated successfully\" }";
