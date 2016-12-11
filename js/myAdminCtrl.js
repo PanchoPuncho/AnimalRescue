@@ -358,7 +358,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         getURL = getURL + "&photos=" + $scope.data.value.photos;
                         $http.get(getURL).then(function (response) {
                             console.log("Animal updated successfully!");
-                            $scope.resetPage();
+                            $timeout( function() {
+                                $scope.resetPage();
+                            }, 3000);
                         });
                         console.log("should be afterUpdate");
                     } else {
@@ -396,9 +398,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                             getURL = getURL + "&photo=uploads/" + $scope.data.value.photo.trim();
                             $http.get(getURL).then(function (response) {
                                 console.log("Picture added successfully!");
-                                $timeout( function() {
-                                    $scope.resetPage();
-                                }, 3000);
+                                document.getElementById("myUpdateForm").submit();
                             });
                         });
                 };
@@ -431,7 +431,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     getURL = getURL + "&photos=" + $scope.data.value.photos;
                     $http.get(getURL).then(function (response) {
                         console.log("Animal added successfully!");
-                        $scope.resetPage();
+                        $timeout( function() {
+                            $scope.resetPage();
+                        }, 3000);
                     });
                 };
 
