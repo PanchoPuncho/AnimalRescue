@@ -56,7 +56,7 @@
 				<li><a class="page-scroll" href="#aboutUsSection">About Us</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/php/super_secret.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Admin Account</a></li>
+				<li><a href="admin.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Admin Account</a></li>
 			</ul>
 		</div>
 	</div>
@@ -282,7 +282,7 @@
 												</div>
 											</div>
 											<div class="form-group text-center">
-												<button class="btn btn-primary" ng-click="attemptAdoption( x.id )">Submit Adoption Inquiry</button>
+												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'ADOPTED' )">Submit Adoption Inquiry</button>
 											</div>
 										</fieldset>
 									</form>
@@ -340,7 +340,7 @@
 												</div>
 											</div>
 											<div class="form-group text-center">
-												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'Fostered' )">Submit Foster Inquiry</button>
+												<button class="btn btn-primary" ng-click="attemptAdoption( x.id, 'FOSTERED' )">Submit Foster Inquiry</button>
 											</div>
 										</fieldset>
 									</form>

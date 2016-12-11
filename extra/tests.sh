@@ -38,12 +38,12 @@ exit 0
 # Timestamps!
 # Check for admin user on super_secret.php!
 # Fix adopter issue!
-# Check for existing user 		// instead of creating a new user for each form
+# Check for existing user 						// instead of creating a new user for each form
 
 ##### Future functionality
-#email the admin				// notifications
-#email the user 				// confirmation
-#delete animal from database 	// if animal dies or gets sent to another shelter 
-#delete picture from animal 	// if incorrect picture
-#implement payment option 		// for donations
+#email the admin								// notifications
+#email the user 								// confirmation
+#delete animal from database 					// if animal dies or gets sent to another shelter 
+#delete picture from animal 					// if incorrect picture
+#implement payment option 						// for donations
 

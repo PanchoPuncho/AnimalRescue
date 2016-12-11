@@ -374,33 +374,34 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 $scope.addPicture = function () {
                     console.log("Adding new picture...");
                     var numPics = "", photoID = "", getURL = "/php/getNumPics.php";
-                    $http.get(getURL)
-                        .then(function (response) {
-                            numPics = response.data.numPics;
+                    $http.get(getURL).then(function (response) {
+                        numPics = response.data.numPics;
 
-                            if (numPics < 10) {
-                                photoID = '00000' + numPics;
-                            } else if (numPics < 100) {
-                                photoID = '0000' + numPics;
-                            } else if (numPics < 1000) {
-                                photoID = '000' + numPics;
-                            } else if (numPics < 10000) {
-                                photoID = '00' + numPics;
-                            } else if (numPics < 100000) {
-                                photoID = '0' + numPics;
-                            } else {
-                                photoID = numPics;
-                            }
+                        if (numPics < 10) {
+                            photoID = '00000' + numPics;
+                        } else if (numPics < 100) {
+                            photoID = '0000' + numPics;
+                        } else if (numPics < 1000) {
+                            photoID = '000' + numPics;
+                        } else if (numPics < 10000) {
+                            photoID = '00' + numPics;
+                        } else if (numPics < 100000) {
+                            photoID = '0' + numPics;
+                        } else {
+                            photoID = numPics;
+                        }
 
-                            getURL = "/php/addPicture.php";
-                            getURL = getURL + "?id=" + photoID.trim();
-                            getURL = getURL + "&animalID=" + $scope.data.value.id.trim();
-                            getURL = getURL + "&photo=uploads/" + $scope.data.value.photo.trim();
-                            $http.get(getURL).then(function (response) {
-                                console.log("Picture added successfully!");
+                        getURL = "/php/addPicture.php";
+                        getURL = getURL + "?id=" + photoID.trim();
+                        getURL = getURL + "&animalID=" + $scope.data.value.id.trim();
+                        getURL = getURL + "&photo=uploads/" + $scope.data.value.photo.trim();
+                        $http.get(getURL).then(function (response) {
+                            console.log("Picture added successfully!");
+                            $timeout( function() {
                                 document.getElementById("myUpdateForm").submit();
-                            });
+                            }, 1000);
                         });
+                    });
                 };
 
                 /**

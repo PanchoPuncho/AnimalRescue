@@ -187,7 +187,7 @@ app.controller("myCtrl", function ($scope, $http) {
     /**
      * Attempt to submit the adoption inquiry
      **/
-    $scope.attemptAdoption = function ( animalID ) {
+    $scope.attemptAdoption = function ( animalID, status ) {
         console.log("Attempting adoption...");
         
         if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
@@ -259,14 +259,14 @@ app.controller("myCtrl", function ($scope, $http) {
                             dataType: 'text json'
                         }).then(function successCallback(response) {
                             console.log("User added successfully!");
-                            $scope.adoptAnimalInDB( animalID, userID );
+                            $scope.adoptAnimalInDB( animalID, userID, status );
                         }, function errorCallback(response) {
                             console.log( "Error on call: " + getURL );
                         });
                     });
                 } else {
                     console.log("User exists with ID: " + response.data.user );
-                    $scope.adoptAnimalInDB( animalID, response.data.user );
+                    $scope.adoptAnimalInDB( animalID, response.data.user, status );
                 }
             }, function errorCallback(response) {
                 console.log( "Error on call: " + getURL );
@@ -360,8 +360,8 @@ app.controller("myCtrl", function ($scope, $http) {
         }
     };
 
-    $scope.adoptAnimalInDB = function( animalID, userID ) {
-        console.log( "adoptAnimalInDB( " + animalID + ", " + userID + " )" );
+    $scope.adoptAnimalInDB = function( animalID, userID, status ) {
+        console.log( "adoptAnimalInDB( " + animalID + ", " + userID + ", " + status + " )" );
 
         console.log("Getting date info...");
         var today = new Date();
@@ -397,7 +397,7 @@ app.controller("myCtrl", function ($scope, $http) {
         var getURL = "/php/adoptAnimal.php?id=" + animalID.trim();
         angular.forEach($scope.animalsInNeed, function (iter) {
             if (iter.id === animalID) {
-                getURL = getURL + "&status=ADOPTED";
+                getURL = getURL + "&status=" + status.trim();
                 getURL = getURL + "&rescuerID=" + userID.trim();
                 getURL = getURL + "&monthRescued=" + month.trim();
                 getURL = getURL + "&yearRescued=" + todayYear;
@@ -405,13 +405,25 @@ app.controller("myCtrl", function ($scope, $http) {
         });
         console.log("URL: " + getURL);
         $http({
-            method: 'GET',
+            method: 'POST',
             url: getURL,
             dataType: 'text json'
         }).then(function successCallback(response) {
             console.log("Animal updated successfully!");
-            window.alert("Animal updated successfully!");
-            window.location.reload();
+            var index = $scope.getAnimal( animalID );
+            var animal = $scope.origAnimalsInNeed[index];
+
+            getURL = "/php/email.php?id=" + animalID + "&status=" + status;
+            $http({
+                method: 'POST',
+                url: getURL,
+                dataType: 'text json'
+            }).then(function successCallback(response) {
+                console.log("Email sent successfully!");
+                window.location.reload();
+            }, function errorCallback(response) {
+                console.log( "Error on call: " + getURL );
+            });
         }, function errorCallback(response) {
             console.log( "Error on call: " + getURL );
         });
@@ -521,6 +533,23 @@ app.controller("myCtrl", function ($scope, $http) {
         if ($scope.animalsInNeed.length === 0) {
             window.alert("No results were found. Please broaden your search.");
         }        
+    };
+
+    /**
+     *
+     **/
+    $scope.getAnimal = function( id ) {
+        var i, toReturn = -1;
+        for (i = 0; i < $scope.origAnimalsInNeed.length; i++) {
+            if ( $scope.origAnimalsInNeed[i].id === id ) {
+                console.log("found");
+                toReturn = i;
+                break;
+            } else {
+                console.log("lost");
+            }
+        }
+        return toReturn;
     };
 
     /**
