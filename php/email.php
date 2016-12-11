@@ -31,11 +31,11 @@
          } else {
             $status = $_GET['status'];
             if ( $status == 'SHELTERED' ) {
-               $status = 'Sheltered';
+               $status = 'Shelter';
             } else if ( $status == 'FOSTERED' ) {
-               $status = 'Fostered';
+               $status = 'Foster';
             } else if ( $status == 'ADOPTED' ) {
-               $status = 'Adopted';
+               $status = 'Adopt';
             } else {
                exit( "Invalid value for status" );
             }
@@ -90,12 +90,16 @@
          } else {
             $fixed = $_GET['fixed'];
          }
+         if ( $_GET['recipient'] == "null" || $_GET['recipient'] == "" ) {
+            $recipient = "cuevas500@gmail.com";
+         } else {
+            $recipient = $_GET['recipient'];
+         }
          $rescuerID = $_GET['rescuerID'];
          $monthRescued = $_GET['monthRescued'];
          $yearRescued = $_GET['yearRescued'];
 
-         $to = "cuevas500@gmail.com";
-         $subject = "Angel Dogs, Inc. - ".$name." Has Been ".$status;
+         $subject = "Angel Dogs, Inc. - Request to ".$status." ".$name;
          $header = "From:abc@somedomain.com \r\n";
          $header .= "Cc:afgh@somedomain.com \r\n";
          $header .= "MIME-Version: 1.0\r\n";
@@ -124,7 +128,7 @@
          $message .= "</table></div>";
          $message .= "</body></html>";
 
-         $retval = mail ($to,$subject,$message,$header);
+         $retval = mail ($recipient,$subject,$message,$header);
          
          if( $retval == true ) {
             echo "Message sent successfully!";

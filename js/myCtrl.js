@@ -434,8 +434,18 @@ app.controller("myCtrl", function ($scope, $http) {
                 url: getURL,
                 dataType: 'text json'
             }).then(function successCallback(response) {
-                console.log("Email sent successfully!");
-                window.location.reload();
+                console.log("Admin email sent successfully!");
+                getURL = getURL + "&recipient=" + $scope.data.value.email1.trim();
+                $http({
+                    method: 'POST',
+                    url: getURL,
+                    dataType: 'text json'
+                }).then(function successCallback(response) {
+                    console.log("User email sent successfully!");                    
+                    window.location.reload();
+                }, function errorCallback(response) {
+                    console.log( "Error on call: " + getURL );
+                });
             }, function errorCallback(response) {
                 console.log( "Error on call: " + getURL );
             });

@@ -1,6 +1,6 @@
 <?php
     // Create connection
-    $con = mysqli_connect( 'aa1ec4bkeb1ur34.cn7hlcsjbshk.us-east-1.rds.amazonaws.com', 'franciscocuevas', 'Juan1985', 'ebdb', 3306 );
+    $con = mysqli_connect( 'aa1ec4bkeb1ur34.cn7hlcsjbshk.us-east-1.rds.amazonaws.com', 'franciscocuevas', 'supersecretpassword', 'ebdb', 3306 );
     
     // Check connection
     if ( mysqli_connect_errno() ) {
