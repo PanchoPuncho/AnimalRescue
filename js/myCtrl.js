@@ -413,20 +413,21 @@ app.controller("myCtrl", function ($scope, $http) {
             var index = $scope.getAnimal( animalID );
             var animal = $scope.origAnimalsInNeed[index];
 
-            getURL = "/php/email.php?id=" + animalID.trim();
-            getURL = getURL + "&status=" + status.trim();
-            getURL = getURL + "&writeUp=" + animal.writeUp.trim();
-            getURL = getURL + "&species=" + animal.species.trim();
-            getURL = getURL + "&breed=" + animal.breed.trim();
-            getURL = getURL + "&sex=" + animal.sex.trim();
-            getURL = getURL + "&monthBorn=" + animal.monthBorn.trim();
-            getURL = getURL + "&yearBorn=" + animal.yearBorn.trim();
-            getURL = getURL + "&size=" + animal.size.trim();
-            getURL = getURL + "&monthFound=" + animal.monthFound.trim();
-            getURL = getURL + "&yearFound=" + animal.yearFound.trim();
-            getURL = getURL + "&fixed=" + animal.fixed.trim();
-            getURL = getURL + "&rescuerID=" + userID.trim();
-            getURL = getURL + "&monthRescued=" + month.trim();
+            getURL = "/php/email.php?id=" + animalID;
+            getURL = getURL + "&name=" + animal.name;
+            getURL = getURL + "&status=" + status;
+            getURL = getURL + "&writeUp=" + animal.writeUp;
+            getURL = getURL + "&species=" + animal.species;
+            getURL = getURL + "&breed=" + animal.breed;
+            getURL = getURL + "&sex=" + animal.sex;
+            getURL = getURL + "&monthBorn=" + animal.monthBorn;
+            getURL = getURL + "&yearBorn=" + animal.yearBorn;
+            getURL = getURL + "&size=" + animal.size;
+            getURL = getURL + "&monthFound=" + animal.monthFound;
+            getURL = getURL + "&yearFound=" + animal.yearFound;
+            getURL = getURL + "&fixed=" + animal.fixed;
+            getURL = getURL + "&rescuerID=" + userID;
+            getURL = getURL + "&monthRescued=" + month;
             getURL = getURL + "&yearRescued=" + todayYear;
             $http({
                 method: 'POST',

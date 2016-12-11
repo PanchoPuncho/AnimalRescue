@@ -21,6 +21,11 @@
          } else {
             $id = $_GET['id'];
          }
+         if ( $_GET['name'] == "null" || $_GET['name'] == "" ) {
+            exit( "name cannot be empty!" );
+         } else {
+            $name = $_GET['name'];
+         }
          if ( $_GET['status'] == "null" || $_GET['status'] == "" ) {
             exit( "status cannot be empty!" );
          } else {
@@ -90,7 +95,7 @@
          $yearRescued = $_GET['yearRescued'];
 
          $to = "cuevas500@gmail.com";
-         $subject = "Angel Dogs, Inc. - ".$id." Has Been ".$status;
+         $subject = "Angel Dogs, Inc. - ".$name." Has Been ".$status;
          $header = "From:abc@somedomain.com \r\n";
          $header .= "Cc:afgh@somedomain.com \r\n";
          $header .= "MIME-Version: 1.0\r\n";
@@ -100,8 +105,22 @@
          $message .= '<style type="text/css">.myTable { background-color:#eee;border-collapse:collapse; }.myTable th { background-color:#000;color:white;width:50%; }.myTable td, .myTable th { padding:5px;border:1px solid #000; }</style>';
          $message .= "<div><h1>Angel Dogs, Inc.</h1><h3>Saving One Dog at a Time!</h3></div>";
          $message .= '<div><table class="myTable">';
-         $message .= "<tr><th>ID</th><th>Status</th><th>Write Up</th><th>Species</th><th>Breed</th><th>Sex</th><th>Month Born</th><th>Year Born</th><th>Size</th><th>Month Found</th><th>Year Found</th><th>Fixed</th><th>Rescuer ID</th><th>Month Rescued</th><th>Year Rescued</th></tr>";
-         $message .= '<tr><td align="center">'.$id.'</td><td align="center">'.$status.'</td><td align="center">'.$writeUp.'</td><td align="center">'.$species.'</td><td align="center">'.$breed.'</td><td align="center">'.$sex.'</td><td align="center">'.$monthBorn.'</td><td align="center">'.$yearBorn.'</td><td align="center">'.$size.'</td><td align="center">'.$monthFound.'</td><td align="center">'.$yearFound.'</td><td align="center">'.$fixed.'</td><td align="center">'.$rescuerID.'</td><td align="center">'.$monthRescued.'</td><td align="center">'.$yearRescued.'</td></tr>';
+         $message .= '<tr><th>ID</th><td>---</td><td>'.$id.'</td></tr>';
+         $message .= '<tr><th>Name</th><td>---</td><td>'.$name.'</td></tr>';
+         $message .= '<tr><th>Status</th><td>---</td><td>'.$status.'</td></tr>';
+         $message .= '<tr><th>Write Up</th><td>---</td><td>'.$writeUp.'</td></tr>';
+         $message .= '<tr><th>Species</th><td>---</td><td>'.$species.'</td></tr>';
+         $message .= '<tr><th>Breed</th><td>---</td><td>'.$breed.'</td></tr>';
+         $message .= '<tr><th>Sex</th><td>---</td><td>'.$sex.'</td></tr>';
+         $message .= '<tr><th>Month Born</th><td>---</td><td>'.$monthBorn.'</td></tr>';
+         $message .= '<tr><th>Year Born</th><td>---</td><td>'.$yearBorn.'</td></tr>';
+         $message .= '<tr><th>Size</th><td>---</td><td>'.$size.'</td></tr>';
+         $message .= '<tr><th>Month Found</th><td>---</td><td>'.$monthFound.'</td></tr>';
+         $message .= '<tr><th>Year Found</th><td>---</td><td>'.$yearFound.'</td></tr>';
+         $message .= '<tr><th>Fixed</th><td>---</td><td>'.$fixed.'</td></tr>';
+         $message .= '<tr><th>Rescuer ID</th><td>---</td><td>'.$rescuerID.'</td></tr>';
+         $message .= '<tr><th>Month Rescued</th><td>---</td><td>'.$monthRescued.'</td></tr>';
+         $message .= '<tr><th>Year Rescued</th><td>---</td><td>'.$yearRescued.'</td></tr>';
          $message .= "</table></div>";
          $message .= "</body></html>";
 

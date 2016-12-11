@@ -14,6 +14,7 @@ typeset getPhotos=${pre}'/getPhotos.php'
 typeset updateAnimal=${pre}'/updateAnimal.php?id=111111&name=Zuko&writeUp=Sleeps%20all%20night,%20naps%20all%20day.&species=Canine&breed=Cane%20Corso%20Mix&sex=Male&monthBorn=July&yearBorn=2012&size=Large%20(between%2060%20and%20100%20lbs)&monthFound=January&yearFound=2015&fixed=Yes&status=ADOPTED&rescuerID=111111&monthRescued=June&yearRescued=2015&age=null&years=null&photos=null'
 typeset adminExists=${pre}'/adminExists.php?user=user&pass=pass'
 typeset userExists=${pre}'/userExists.php?email=francisco.cuevas@richmond.edu'
+typeset email=${pre}'/email.php?id=000002&name=testName&status=ADOPTED&writeUp=writeup&species=canine&breed=labrador&sex=male&monthBorn=July&yearBorn=2012&size=large&monthFound=July&yearFound=2015&fixed=yes'
 
 # RunTests
 curl -X POST ${addAnimal}
@@ -30,6 +31,7 @@ curl -X GET ${getPhotos}'?id=000000'
 curl -X POST ${updateAnimal}
 curl -X GET ${adminExists}
 curl -X GET ${userExists}
+curl -X POST ${email}
 
 echo "DONE! Go clear the testing."
 exit 0
