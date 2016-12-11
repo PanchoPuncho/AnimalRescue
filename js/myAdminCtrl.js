@@ -315,14 +315,17 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     } else if ($scope.data.value.status === null || $scope.data.value.status.trim() === '') {
                         console.log("Updating animal failed!");
                     } else {
+                        if ($scope.data.value.photo !== null && $scope.data.value.photo !== "" && $scope.data.value.photo !== undefined) {
+                            $scope.data.value.needToAddPhoto = true;
+                            $scope.addPicture();
+                        } else {
+                            $scope.data.value.needToAddPhoto = false;
+                        }
+
                         if ($scope.data.value.id === $scope.data.value.newAnimalID) {
                             $scope.addAnimal();
                         } else {
                             $scope.updateAnimal();
-                        }
-                        
-                        if ($scope.data.value.photo !== null && $scope.data.value.photo !== "" && $scope.data.value.photo !== undefined) {
-                            $scope.addPicture();
                         }
                     }
                 };
@@ -358,9 +361,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         getURL = getURL + "&photos=" + $scope.data.value.photos;
                         $http.get(getURL).then(function (response) {
                             console.log("Animal updated successfully!");
-                            $timeout( function() {
+                            if ( $scope.data.value.needToAddPhoto === false ) {
                                 $scope.resetPage();
-                            }, 3000);
+                            }
                         });
                         console.log("should be afterUpdate");
                     } else {
@@ -399,7 +402,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                             console.log("Picture added successfully!");
                             $timeout( function() {
                                 document.getElementById("myUpdateForm").submit();
-                            }, 1000);
+                            }, 2000);
                         });
                     });
                 };
@@ -432,9 +435,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     getURL = getURL + "&photos=" + $scope.data.value.photos;
                     $http.get(getURL).then(function (response) {
                         console.log("Animal added successfully!");
-                        $timeout( function() {
+                        if ( $scope.data.value.needToAddPhoto === false ) {
                             $scope.resetPage();
-                        }, 3000);
+                        }
                     });
                 };
 

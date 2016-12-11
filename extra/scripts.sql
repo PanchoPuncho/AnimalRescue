@@ -59,9 +59,9 @@ CREATE TABLE Animal (
     rescuerID   char(6),                -- 000000, etc
     monthRescued varchar(9),            -- January, etc
     yearRescued char(4),                -- 2000, etc
-    age         varchar(32),            -- stub
-    years       int,                    -- stub
-    photos      char(1),                -- stub
+    age         varchar(32),            -- stub - remove
+    years       int,                    -- stub - remove
+    photos      char(1),                -- stub - remove
     ts          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (rescuerID) REFERENCES Webuser(id),
