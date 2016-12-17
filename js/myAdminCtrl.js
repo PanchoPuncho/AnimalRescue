@@ -264,6 +264,8 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     var i;
                     for (i = 0; i < $scope.animals.length; i = i + 1) {
                         if ($scope.animals[i].id === id) {
+                            $scope.data.value.animalIndex = i;
+
                             $scope.data.value.id = id;
                             $scope.data.value.name = $scope.animals[i].name;
                             $scope.data.value.writeUp = $scope.animals[i].writeUp;
@@ -279,6 +281,43 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                             $scope.data.value.status = $scope.animals[i].status;
                         }
                     }
+                };
+
+                /**
+                 * Compare the active animal values to the database values
+                 **/
+                $scope.animalNotModified = function( ) {
+                    console.log( "animalModified()" );
+                    var i = $scope.data.value.animalIndex;
+
+                    if ( $scope.data.value.name !== $scope.animals[i].name ) {
+                        return 1;
+                    } else if ( $scope.data.value.writeUp !== $scope.animals[i].writeUp ) {
+                        return 2;
+                    } else if ( $scope.data.value.species !== $scope.animals[i].species ) {
+                        return 3;
+                    } else if ( $scope.data.value.breed !== $scope.animals[i].breed ) {
+                        return 4;
+                    } else if ( $scope.data.value.sex !== $scope.animals[i].sex ) {
+                        return 5;
+                    } else if ( $scope.data.value.monthBorn !== $scope.animals[i].monthBorn ) {
+                        return 6;
+                    } else if ( $scope.data.value.yearBorn !== $scope.animals[i].yearBorn ) {
+                        return 7;
+                    } else if ( $scope.data.value.size !== $scope.animals[i].size ) {
+                        return 8;
+                    } else if ( $scope.data.value.monthFound !== $scope.animals[i].monthFound ) {
+                        return 9;
+                    } else if ( $scope.data.value.yearFound !== $scope.animals[i].yearFound ) {
+                        return 10;
+                    } else if ( $scope.data.value.fixed !== $scope.animals[i].fixed ) {
+                        return 11;
+                    } else if ( $scope.data.value.status !== $scope.animals[i].status ) {
+                        return 12;
+                    } else {
+                        return 0;
+                    }
+
                 };
                 
                 /**
@@ -324,7 +363,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
 
                         if ($scope.data.value.id === $scope.data.value.newAnimalID) {
                             $scope.addAnimal();
-                        } else {
+                        } else if ( $scope.animalNotModified() !== 0 ) {
                             $scope.updateAnimal();
                         }
                     }

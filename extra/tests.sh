@@ -42,10 +42,10 @@ exit 0
 # Fix adopter issue!
 # Check for existing user 						// instead of creating a new user for each form
 # Email the admin								// notifications
+# Email the user 								// confirmation
 
 ##### Future functionality
-#email the user 								// confirmation
-#delete animal from database 					// if animal dies or gets sent to another shelter 
 #delete picture from animal 					// if incorrect picture
+#delete animal from database 					// if animal dies or gets sent to another shelter 
 #implement payment option 						// for donations
 
