@@ -139,7 +139,7 @@ SELECT * FROM Picture;
 DELETE FROM Webuser where id!='000000';
 SELECT * FROM Webuser;
 
-# Clear testing
+-- Clear testing
 DELETE FROM Picture where id='111111';
 DELETE FROM Animal where id='111111';
 DELETE FROM Webuser where id='111111';

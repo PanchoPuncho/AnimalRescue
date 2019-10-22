@@ -166,9 +166,6 @@ app.controller("myCtrl", function ($scope, $http) {
                 {name: 'Other'}
             ],
             year: [
-                {name: '2016'},
-                {name: '2017'},
-                {name: '2018'},
                 {name: '2019'},
                 {name: '2020'},
                 {name: '2021'},
@@ -185,33 +182,30 @@ app.controller("myCtrl", function ($scope, $http) {
 
 
     /**
-     * Attempt to submit the adoption inquiry
-     **/
-    $scope.attemptAdoption = function ( animalID, status ) {
-        console.log("Attempting adoption...");
-        
+     * Attempt to submit the adoption inquiry.
+     * @param {*} animalID The animal's ID.
+     * @param {*} status The animal's status.
+     */
+    $scope.attemptAdoption = function ( animalID, status ) {        
         if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The name is required.");
         } else if ($scope.data.value.phone === null || $scope.data.value.phone.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The phone is required.");
         } else if ($scope.data.value.email1 === null || $scope.data.value.email1.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The email1 is required.");
         } else if ($scope.data.value.email2 === null || $scope.data.value.email2.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The email2 is required.");
         } else if ($scope.data.value.email2 !== $scope.data.value.email1) {
-            console.log("Emails do not match!");
             window.alert("Emails do not match!");
         } else if ($scope.data.value.addr1 === null || $scope.data.value.addr1.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The addr1 is required.");
         } else if ($scope.data.value.city === null || $scope.data.value.city.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The city is required.");
         } else if ($scope.data.value.state === null || $scope.data.value.state.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The state is required.");
         } else if ($scope.data.value.zip === null || $scope.data.value.zip.trim() === '') {
-            console.log("Adoption failed!");
+            window.alert("The adoption failed. The zip is required.");
         } else {
-            console.log("Checking if user already exists...");
-
             var getURL = "/php/userExists.php?email=" + $scope.data.value.email1.trim().toLowerCase();
             $http({
                 method: 'GET',
@@ -219,11 +213,9 @@ app.controller("myCtrl", function ($scope, $http) {
                 dataType: 'text json'
             }).then(function successCallback(response) {
                 if ( response.data.user === "" ) {
-                    console.log("Adding new user...");
 
                     var numUsers = "", userID = "", getURL = "/php/getNumUsers.php";
                     $http.get(getURL).then(function (response) {
-                        console.log("Number of users received!");
 
                         numUsers = response.data.numUsers;
 
@@ -252,55 +244,48 @@ app.controller("myCtrl", function ($scope, $http) {
                         getURL = getURL + "&state=" + $scope.data.value.state.trim();
                         getURL = getURL + "&zip=" + $scope.data.value.zip.trim();
 
-                        console.log("URL: " + getURL);
                         $http({
                             method: 'GET',
                             url: getURL,
                             dataType: 'text json'
                         }).then(function successCallback(response) {
-                            console.log("User added successfully!");
                             $scope.adoptAnimalInDB( animalID, userID, status );
                         }, function errorCallback(response) {
-                            console.log( "Error on call: " + getURL );
+                            window.alert( "Error on call: " + getURL );
                         });
                     });
                 } else {
-                    console.log("User exists with ID: " + response.data.user );
                     $scope.adoptAnimalInDB( animalID, response.data.user, status );
                 }
             }, function errorCallback(response) {
-                console.log( "Error on call: " + getURL );
+                window.alert("Error on call: " + getURL );
             });
         }
     };
 
     /**
-     * Schedule the donation
+     * Schedule the donation.
      **/
     $scope.attemptDonation = function () {
-        var valid = true;
-
         if ($scope.data.value.donation === null || $scope.data.value.donation.trim() === '') {
-            valid = false;
-        } else if ($scope.data.value.amount === null || $scope.data.value.amount.trim() === '') {
-            valid = false;
+            window.alert("Donation failed. The donation is required."); valid = false;
+        } else if ($scope.data.value.amount === 0) {
+            window.alert("Donation failed. The amount is required."); valid = false;
         } else if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
-            valid = false;
+            window.alert("Donation failed. The name is required."); valid = false;
         } else if ($scope.data.value.number === null || $scope.data.value.number.trim() === '') {
-            valid = false;
+            window.alert("Donation failed. The number is required."); valid = false;
         } else if ($scope.data.value.month === null || $scope.data.value.month.trim() === '') {
-            valid = false;
+            window.alert("Donation failed. The month is required."); valid = false;
         } else if ($scope.data.value.year === null || $scope.data.value.year.trim() === '') {
-            valid = false;
+            window.alert("Donation failed. The year is required."); valid = false;
         } else if ($scope.data.value.cvv === null || $scope.data.value.cvv.trim() === '') {
-            valid = false;
-        }
-
-        if ( valid ) {
+            window.alert("Donation failed. The cvv is required."); valid = false;
+        } else {
             $scope.donationData = {
                 form:       'donate',
                 donation:   $scope.data.value.donation.trim(),
-                amount:     $scope.data.value.amount.trim(),
+                amount:     $scope.data.value.amount,
                 name:       $scope.data.value.name.trim(),
                 number:     $scope.data.value.number.trim(),
                 month:      $scope.data.value.month.trim(),
@@ -308,39 +293,33 @@ app.controller("myCtrl", function ($scope, $http) {
                 cvv:        $scope.data.value.cvv.trim()
             };
 
-            window.alert('Donation: ' + JSON.stringify($scope.donationData, null, 4));
-        } else {
-            window.alert('Donation validation failed...');
-        }
+            window.alert('Donation completed!');
+        }      
     };
 
     /**
-     * Schedule the sponsor
+     * Schedule the sponsor.
      **/
     $scope.attemptSponsor = function () {
-        var valid = true;
-
         if ($scope.data.value.email1 === null || $scope.data.value.email1.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The email1 is required.");
         } else if ($scope.data.value.email2 === null || $scope.data.value.email2.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The email2 is required.");
         } else if ($scope.data.value.donation === null || $scope.data.value.donation.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The donation is required.");
         } else if ($scope.data.value.amount === null || $scope.data.value.amount.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The amount is required.");
         } else if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The name is required.");
         } else if ($scope.data.value.number === null || $scope.data.value.number.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The number is required.");
         } else if ($scope.data.value.month === null || $scope.data.value.month.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The month is required.");
         } else if ($scope.data.value.year === null || $scope.data.value.year.trim() === '') {
-            valid = false;
+            window.alert("Sponsor failed. The year is required.");
         } else if ($scope.data.value.cvv === null || $scope.data.value.cvv.trim() === '') {
-            valid = false;
-        }
-
-        if ( valid ) {
+            window.alert("Sponsor failed. The cvv is required.");
+        } else {
             $scope.sponsorData = {
                 form:       'sponsor',
                 email1:     $scope.data.value.email1.trim(),
@@ -354,16 +333,17 @@ app.controller("myCtrl", function ($scope, $http) {
                 cvv:        $scope.data.value.cvv.trim()
             };
 
-            window.alert('Sponsor: ' + JSON.stringify($scope.sponsorData, null, 4));
-        } else {
-            window.alert('Sponsor validation failed...');
+            window.alert('Sponsor completed!');
         }
     };
 
+    /**
+     * Adopt the animal in the database.
+     * @param {*} animalID The animal's ID.
+     * @param {*} userID The user's ID.
+     * @param {*} status The animal's new status.
+     */
     $scope.adoptAnimalInDB = function( animalID, userID, status ) {
-        console.log( "adoptAnimalInDB( " + animalID + ", " + userID + ", " + status + " )" );
-
-        console.log("Getting date info...");
         var today = new Date();
         var todayMonth = today.getMonth() + 1, month = "";
         var todayYear = today.getFullYear();
@@ -393,7 +373,6 @@ app.controller("myCtrl", function ($scope, $http) {
             month = "December";
         }
 
-        console.log("Updating animal...");
         var getURL = "/php/adoptAnimal.php?id=" + animalID.trim();
         angular.forEach($scope.animalsInNeed, function (iter) {
             if (iter.id === animalID) {
@@ -403,13 +382,12 @@ app.controller("myCtrl", function ($scope, $http) {
                 getURL = getURL + "&yearRescued=" + todayYear;
             }
         });
-        console.log("URL: " + getURL);
+
         $http({
             method: 'POST',
             url: getURL,
             dataType: 'text json'
         }).then(function successCallback(response) {
-            console.log("Animal updated successfully!");
             var index = $scope.getAnimal( animalID );
             var animal = $scope.origAnimalsInNeed[index];
 
@@ -434,34 +412,33 @@ app.controller("myCtrl", function ($scope, $http) {
                 url: getURL,
                 dataType: 'text json'
             }).then(function successCallback(response) {
-                console.log("Admin email sent successfully!");
                 getURL = getURL + "&recipient=" + $scope.data.value.email1.trim();
                 $http({
                     method: 'POST',
                     url: getURL,
                     dataType: 'text json'
                 }).then(function successCallback(response) {
-                    console.log("User email sent successfully!");                    
                     window.location.reload();
                 }, function errorCallback(response) {
-                    console.log( "Error on call: " + getURL );
+                    window.alert("Error on call: " + getURL);
                 });
             }, function errorCallback(response) {
-                console.log( "Error on call: " + getURL );
+                window.alert("Error on call: " + getURL);
             });
         }, function errorCallback(response) {
-            console.log( "Error on call: " + getURL );
+            window.alert("Error on call: " + getURL);
         });
     };
 
     /**
-     * Calculate the ages
+     * Calculate the ages.
      **/
     $scope.calculateAges = function () {
         var i;
         var today = new Date();
         var todayMonth = today.getMonth() + 1;
         var todayYear = today.getFullYear();
+        if (!$scope.origAnimalsInNeed) $scope.origAnimalsInNeed = [];
         for (i = 0; i < $scope.origAnimalsInNeed.length; i = i + 1) {
             var mVal, month = $scope.origAnimalsInNeed[i].monthBorn;
             if (month === "January") {
@@ -531,13 +508,12 @@ app.controller("myCtrl", function ($scope, $http) {
     };
 
     /**
-     * Filter the animals
+     * Filter the animals.
      **/
     $scope.filter = function () {
         $scope.animalsInNeed = [];
         var i;
-
-        if ($scope.origAnimalsInNeed.length > 0) {
+        if ($scope.origAnimalsInNeed && $scope.origAnimalsInNeed.length > 0) {
             for (i = 0; i < $scope.origAnimalsInNeed.length; i = i + 1) {
                 if ($scope.filterData.value.species === $scope.origAnimalsInNeed[i].species || $scope.filterData.value.species === null || $scope.filterData.value.species === "") {
                     if ($scope.filterData.value.breed === $scope.origAnimalsInNeed[i].breed || $scope.filterData.value.breed === null || $scope.filterData.value.breed === "") {
@@ -561,59 +537,44 @@ app.controller("myCtrl", function ($scope, $http) {
     };
 
     /**
-     *
-     **/
+     * Retrieve the animal by its ID.
+     * @param {*} id The animal's ID.
+     */
     $scope.getAnimal = function( id ) {
         var i, toReturn = -1;
         for (i = 0; i < $scope.origAnimalsInNeed.length; i++) {
             if ( $scope.origAnimalsInNeed[i].id === id ) {
-                console.log("found");
                 toReturn = i;
                 break;
-            } else {
-                console.log("lost");
             }
         }
         return toReturn;
     };
 
     /**
-     * Get the photos from the database and assign to their owner
-     **/
-    $scope.getPhotos = function (option) {
-        if (option === "animalsInNeed") {
-            angular.forEach($scope.origAnimalsInNeed, function (iter) {
-                var url = "/php/getPhotos.php?id=" + iter.id.trim();
-                $http.get(url)
-                    .then(function (response) {
-                        iter.photos = response.data.photos;
-                    });
-            });
-            $scope.filter();
-        } else if (option === "adoptedAnimals") {
-            angular.forEach($scope.adoptedAnimals, function (iter) {
-                var url = "/php/getPhotos.php?id=" + iter.id.trim();
-                $http.get(url)
-                    .then(function (response) {
-                        iter.photos = response.data.photos;
-                    });
-            });
-        }
+     * Get the photos from the database and assign to their owner.
+     * @param {*} animals The list of animals.
+     */
+    $scope.getPhotos = function (animals) {
+        angular.forEach(animals, function (iter) {
+            var url = "/php/getPhotos.php?id=" + iter.id.trim();
+            $http.get(url)
+                .then(function (response) {
+                    iter.photos = response.data.photos;
+                });
+        });
+        $scope.filter();
     };
 
     /**
-     * Email the company
+     * Email the company.
      **/
-    $scope.sendEmail = function () {
-        var status = true;
-        
+    $scope.sendEmail = function () {        
         if ($scope.data.value.subject === null || $scope.data.value.subject.trim() === '') {
-            status = false;
+            window.alert("Failed to send the email. The subject is required.");
         } else if ($scope.data.value.body === null || $scope.data.value.body.trim() === '') {
-            status = false;
-        }
-        
-        if (status) {
+            window.alert("Failed to send the email. The body is required.");
+        } else {
             $scope.emailData = {
                 form:       'email',
                 email1:     $scope.data.value.email1.trim(),
@@ -623,14 +584,12 @@ app.controller("myCtrl", function ($scope, $http) {
                 body:       $scope.data.value.body.trim()
             };
 
-            window.alert('Email: ' + JSON.stringify($scope.emailData, null, 4));
-        } else {
-            window.alert('Email validation failed...');
+            window.alert('Email Sent!');
         }
     };
 
     /**
-     * Activate/Deactivate the "more info" triggers in the rescue modals
+     * Activate/Deactivate the "more info" triggers in the rescue modals.
      **/
     $scope.showAdoptInfo = false;
     $scope.viewAdoptInfo = function () {
@@ -654,7 +613,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $http.get("/php/getAnimalsInNeed.php")
         .then(function (response) {
             $scope.origAnimalsInNeed = response.data.animals;
-            $scope.getPhotos("animalsInNeed");
+            $scope.getPhotos($scope.origAnimalsInNeed);
             $scope.calculateAges();
             $scope.calculateBreedOptions();
         });
@@ -662,6 +621,6 @@ app.controller("myCtrl", function ($scope, $http) {
     $http.get("/php/getAdoptedAnimals.php")
     .then(function (response) {
         $scope.adoptedAnimals = response.data.animals;
-        $scope.getPhotos("adoptedAnimals");
+        $scope.getPhotos($scope.adoptedAnimals);
     });
 });
