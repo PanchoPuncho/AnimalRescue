@@ -1,6 +1,9 @@
 <?php
+    // Get secrets
+    $secrets = parse_ini_file("../../secrets.ini");
+
     // Create connection
-    $con =  mysqli_connect('aa1ec4bkeb1ur34.cn7hlcsjbshk.us-east-1.rds.amazonaws.com', 'franciscocuevas', 'supersecretpassword', 'ebdb', 3306);
+    $con = mysqli_connect( $secrets[MYSQL], $secrets[MYSQL_USER], $secrets[MYSQL_PASS], $secrets[MYSQL_DB], 3306);
     
     // Check connection
 	if ( mysqli_connect_errno() ) {
