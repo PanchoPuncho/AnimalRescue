@@ -56,7 +56,7 @@
 
 
 <!-- Navigation Bar -->
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="242">
+<nav class="navbar navbar-inverse {{hidden}}" data-spy="affix" data-offset-top="242">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -79,7 +79,7 @@
 
 
 <!-- EDIT SECTION -->
-<section id="eventSection" class="container-fluid text-center">
+<section id="eventSection" class="container-fluid text-center {{hidden}}">
     <div class="row">
         <h2>Hello there, {{adminUser}}!</h2>
         <h4>What changes would you like to make?</h4>
@@ -89,7 +89,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <form class="form-horizontal getInTouchForms" id="myUpdateForm" role="form" action="php/uploadImage.php" method="post" enctype="multipart/form-data">
-                <feildset>
+                <fieldset>
                     <div class="form-group">
                         <div class="col-sm-6">
                             <div id="sponsorInput1" class="input-group">
@@ -189,7 +189,7 @@
                             <button type='button' class="btn btn-primary" ng-click="update()">Update</button>
                         </div>
                     </div>
-                </feildset>
+                </fieldset>
             </form>
         </div>
         <div class="col-sm-2"></div>
@@ -202,7 +202,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="container-fluid navbar-fixed-bottom text-center">
+<footer class="container-fluid navbar-fixed-bottom text-center {{hidden}}">
     <h5>Update details of an existing animal --- Add a new animal --- Add pictures to an existing animal</h5>
 </footer>
 

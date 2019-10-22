@@ -1,22 +1,20 @@
 app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
     
     $scope.admin = false;
+    $scope.hidden = "hidden";
     $scope.modalShow = "show";
     $scope.modalMessage = null;
     $scope.adminUser = "Admin";
-    console.log("start");
 
     $scope.login = function ( user, pass ) {
-        console.log("Checking admin credentials...");
         $http.get("/php/adminExists.php?user=" + user + "&pass=" + pass).then(function (response) {
             if ( response.data.numAdmins == "1" ) {
-                console.log( "Logged into super_secret as " + user );
-
                 /**
-                 *
+                 * Reset the page.
                  **/
                 $scope.resetPage = function() {
                     $scope.admin = true;
+                    $scope.hidden = "";
                     $scope.modalShow = "fade";
                     $scope.adminUser = user;
 
@@ -162,14 +160,16 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                                 {name: '2013'},
                                 {name: '2014'},
                                 {name: '2015'},
-                                {name: '2016'}
+                                {name: '2016'},
+                                {name: '2017'},
+                                {name: '2018'},
+                                {name: '2019'}
                             ]
                         }
                     };
 
                     document.getElementById("fileToUpload").value = "";
 
-                    console.log("Getting animals from database...");
                     $http.get("/php/getAnimals.php").then(function (response) {
                         $scope.animals = response.data.animals;
                         $scope.calculateNames();
@@ -179,17 +179,16 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 * Take the actual list of breeds, and have them be the only options available.
+                 * Take the actual list of breeds and have them be the only options available.
                  **/
                 $scope.calculateNames = function () {
-                    console.log("Calculating names...");
                     var i;
                     
                     $scope.clearForm();
                     
                     $scope.data.options.name = [];
                     
-                    if ($scope.data.value.name !== null && $scope.data.value.name !== "" && $scope.data.value.name !== undefined) {
+                    if ($scope.data.value.name) {
                         var len = $scope.data.value.name.length;
 
                         for (i = 0; i < $scope.animals.length; i = i + 1) {
@@ -211,11 +210,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 * 
+                 * Calculate the new animal ID. Note that animals cannot be deleted after their entry.
                  **/
                 $scope.calculateNewAnimalID = function () {
-                    console.log("Calculating new animal id...");
-
                     $scope.data.value.newAnimalID = "";
 
                     if ($scope.animals.length < 10) {
@@ -234,11 +231,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
                 
                 /**
-                 *
+                 * Clear the form.
                  **/
                 $scope.clearForm = function () {
-                    console.log("Clearing form...");
-
                     document.getElementById("fileToUpload").value = "";
 
                     $scope.data.value.writeUp =    null;
@@ -247,7 +242,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     $scope.data.value.sex =        null;
                     $scope.data.value.monthBorn =  null;
                     $scope.data.value.yearBorn =   null;
-                    $scope.data.value.size =      null;
+                    $scope.data.value.size =       null;
                     $scope.data.value.monthFound = null;
                     $scope.data.value.yearFound =  null;
                     $scope.data.value.fixed =      null;
@@ -257,10 +252,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 * Set the active animal
+                 * Set the active animal.
                  **/
                 $scope.setAnimal = function (id) {
-                    console.log("Setting animal...");
                     var i;
                     for (i = 0; i < $scope.animals.length; i = i + 1) {
                         if ($scope.animals[i].id === id) {
@@ -284,10 +278,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 * Compare the active animal values to the database values
+                 * Compare the active animal values to the database values.
                  **/
                 $scope.animalNotModified = function( ) {
-                    console.log( "animalModified()" );
                     var i = $scope.data.value.animalIndex;
 
                     if ( $scope.data.value.name !== $scope.animals[i].name ) {
@@ -321,38 +314,36 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
                 
                 /**
-                 * Update the database
+                 * Update the animal in the database.
                  **/
                 $scope.update = function () {
-                    console.log("Updating...");
-
                     var fileButton = document.getElementById("fileToUpload");
                     $scope.data.value.photo = fileButton.value.replace(/^.*[\\\/]/, '');
                                         
                     if ($scope.data.value.name === null || $scope.data.value.name.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The name is required.");
                     } else if ($scope.data.value.writeUp === null || $scope.data.value.writeUp === undefined || $scope.data.value.writeUp.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The write up is required.");
                     } else if ($scope.data.value.species === null || $scope.data.value.species.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The species is required.");
                     } else if ($scope.data.value.breed === null || $scope.data.value.breed.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The breed is required.");
                     } else if ($scope.data.value.sex === null || $scope.data.value.sex.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The sex is required.");
                     } else if ($scope.data.value.monthBorn === null || $scope.data.value.monthBorn.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The month born is required.");
                     } else if ($scope.data.value.yearBorn === null || $scope.data.value.yearBorn.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The year born is required.");
                     } else if ($scope.data.value.size === null || $scope.data.value.size.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The size is required.");
                     } else if ($scope.data.value.monthFound === null || $scope.data.value.monthFound.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The month found is required.");
                     } else if ($scope.data.value.yearFound === null || $scope.data.value.yearFound.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The year found is required.");
                     } else if ($scope.data.value.fixed === null || $scope.data.value.fixed.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The fixed is required.");
                     } else if ($scope.data.value.status === null || $scope.data.value.status.trim() === '') {
-                        console.log("Updating animal failed!");
+                        window.alert("Failed to update animal. The status is required.");
                     } else {
                         if ($scope.data.value.photo !== null && $scope.data.value.photo !== "" && $scope.data.value.photo !== undefined) {
                             $scope.data.value.needToAddPhoto = true;
@@ -370,14 +361,10 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 *
+                 * Update the animal.
                  **/
                 $scope.updateAnimal = function () {
-                    console.log("Updating existing animal: ");
-
                     if ( $scope != null && $scope.data != null && $scope.data.value != null ) {
-                        console.log("Animal: " + JSON.stringify( $scope.data.value, undefined, 2 ));
-
                         var getURL = "/php/updateAnimal.php";
                         getURL = getURL + "?id=" + $scope.data.value.id.trim();
                         getURL = getURL + "&name=" + $scope.data.value.name.trim();
@@ -399,22 +386,20 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         getURL = getURL + "&years=" + $scope.data.value.years;
                         getURL = getURL + "&photos=" + $scope.data.value.photos;
                         $http.get(getURL).then(function (response) {
-                            console.log("Animal updated successfully!");
+                            window.alert("Animal updated successfully!");
                             if ( $scope.data.value.needToAddPhoto === false ) {
                                 $scope.resetPage();
                             }
                         });
-                        console.log("should be afterUpdate");
                     } else {
-                        alert("Bad...really bad...");
+                        window.alert("Bad...really bad...");
                     }
                 };
 
                 /**
-                 *
+                 * Add a picture to an animal.
                  **/
                 $scope.addPicture = function () {
-                    console.log("Adding new picture...");
                     var numPics = "", photoID = "", getURL = "/php/getNumPics.php";
                     $http.get(getURL).then(function (response) {
                         numPics = response.data.numPics;
@@ -438,7 +423,6 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                         getURL = getURL + "&animalID=" + $scope.data.value.id.trim();
                         getURL = getURL + "&photo=uploads/" + $scope.data.value.photo.trim();
                         $http.get(getURL).then(function (response) {
-                            console.log("Picture added successfully!");
                             $timeout( function() {
                                 document.getElementById("myUpdateForm").submit();
                             }, 2000);
@@ -447,11 +431,9 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                 };
 
                 /**
-                 *
+                 * Add an animal.
                  **/
                 $scope.addAnimal = function () {
-                    console.log("Adding new animal...");
-
                     var getURL = "/php/addAnimal.php";
                     getURL = getURL + "?id=" + $scope.data.value.id.trim();
                     getURL = getURL + "&name=" + $scope.data.value.name.trim();
@@ -473,7 +455,7 @@ app.controller("myAdminCtrl", function ($scope, $http, $timeout, $window) {
                     getURL = getURL + "&years=" + $scope.data.value.years;
                     getURL = getURL + "&photos=" + $scope.data.value.photos;
                     $http.get(getURL).then(function (response) {
-                        console.log("Animal added successfully!");
+                        window.alert("Animal added successfully!");
                         if ( $scope.data.value.needToAddPhoto === false ) {
                             $scope.resetPage();
                         }

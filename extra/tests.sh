@@ -1,6 +1,6 @@
 #!/bin/bash
 
-typeset pre='http://animalrescue.us-east-1.elasticbeanstalk.com/php';
+typeset pre='http://animal-rescue.us-west-2.elasticbeanstalk.com/php';
 typeset addAnimal=${pre}'/addAnimal.php?id=111111&name=Rafita&writeUp=My%20bad,%20Rafa&species=Feline&breed=Greyhound%20Mix&sex=Male&monthBorn=July&yearBorn=2004&size=Extra%20Small%20(less%20than%2010%20lbs)&monthFound=December&yearFound=2016&fixed=Yes&status=SHELTERED&rescuerID=null&monthRescued=null&yearRescued=null&age=null&years=null&photos=null';
 typeset addPicture=${pre}'/addPicture.php?id=111111&animalID=111111&photo=uploads/FrankPup.jpg';
 typeset addUser=${pre}'/addUser.php?id=111111&fullName=billy%20bob&phone=5095211949&email=test@home.com&addr1=test_address&city=Richmond&state=Virginia&zip=23294';
@@ -35,17 +35,3 @@ curl -X POST ${email}
 
 echo "DONE! Go clear the testing."
 exit 0
-
-##### New functionality
-# Timestamps!
-# Check for admin user on super_secret.php!
-# Fix adopter issue!
-# Check for existing user 						// instead of creating a new user for each form
-# Email the admin								// notifications
-# Email the user 								// confirmation
-
-##### Future functionality
-#delete picture from animal 					// if incorrect picture
-#delete animal from database 					// if animal dies or gets sent to another shelter 
-#implement payment option 						// for donations
-
